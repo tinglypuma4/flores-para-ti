@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Stacey - 2 Meses ❤️</title>
+    <title>Para Stacey, con todo mi amor</title>
     <style>
         * {
             margin: 0;
@@ -12,118 +12,57 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #ffeef8 0%, #ffe5f1 100%);
-        }
-
-        /* Contenedor parallax */
-        .parallax-container {
-            height: 100vh;
-            overflow-x: hidden;
-            overflow-y: auto;
-            perspective: 1px;
-            scroll-behavior: smooth;
-        }
-
-        /* Secciones */
-        section {
-            position: relative;
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
             min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            flex-direction: column;
+            align-items: center;
             padding: 2rem;
-            text-align: center;
+            overflow-x: hidden;
         }
 
-        /* Capa de parallax */
-        .parallax-layer {
-            position: absolute;
-            inset: 0;
-            transform-style: preserve-3d;
-        }
-
-        .parallax-back {
-            transform: translateZ(-2px) scale(3);
-        }
-
-        .parallax-mid {
-            transform: translateZ(-1px) scale(2);
-        }
-
-        .parallax-front {
-            transform: translateZ(0);
-        }
-
-        /* Flores flotantes */
-        .flower {
-            position: absolute;
-            font-size: 3rem;
-            animation: float 6s ease-in-out infinite;
-            opacity: 0;
+        /* Partículas sutiles de fondo */
+        .particle {
+            position: fixed;
             pointer-events: none;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Corazones flotantes */
-        .heart {
-            position: absolute;
-            font-size: 2rem;
-            color: #ff69b4;
-            animation: heartFloat 8s ease-in-out infinite;
             opacity: 0;
+            animation: floatParticle 15s ease-in-out infinite;
         }
 
-        @keyframes heartFloat {
-            0% {
-                transform: translateY(100vh) scale(0);
+        @keyframes floatParticle {
+            0%, 100% {
+                transform: translate(0, 100vh) scale(0);
                 opacity: 0;
             }
             10% {
-                opacity: 0.8;
+                opacity: 0.3;
             }
             50% {
-                transform: translateY(50vh) scale(1.2);
+                transform: translate(var(--x), 50vh) scale(1);
+                opacity: 0.2;
             }
             90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-20vh) scale(0);
-                opacity: 0;
+                opacity: 0.3;
             }
         }
 
-        /* Contenido */
-        .content {
+        /* Carta principal */
+        .letter-container {
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            padding: 4rem 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
             position: relative;
-            z-index: 10;
-            max-width: 800px;
-            animation: fadeInUp 1.5s ease-out;
+            animation: fadeIn 2s ease-out;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -131,388 +70,579 @@
             }
         }
 
-        h1 {
-            font-size: 4rem;
-            color: #ff1493;
-            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
-            margin-bottom: 1rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        h2 {
-            font-size: 3rem;
-            color: #ff69b4;
-            margin-bottom: 2rem;
-        }
-
-        p {
-            font-size: 1.5rem;
-            color: #8b4789;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Contador de tiempo */
-        .time-counter {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .time-unit {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
-            min-width: 120px;
-            animation: bounceIn 1s ease-out;
-        }
-
-        @keyframes bounceIn {
-            0% {
-                transform: scale(0);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .time-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #ff1493;
-            display: block;
-        }
-
-        .time-label {
-            font-size: 1rem;
-            color: #8b4789;
-            text-transform: uppercase;
-        }
-
-        /* Rosas giratorias */
-        .rose-container {
+        /* Ramo de flores */
+        .flower-bouquet {
             position: relative;
             width: 200px;
-            height: 200px;
-            margin: 3rem auto;
+            height: 180px;
+            margin: 0 auto 2rem auto;
+            animation: floatBouquet 4s ease-in-out infinite;
         }
 
-        .rose {
+        @keyframes floatBouquet {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .flower-stem {
             position: absolute;
-            font-size: 4rem;
-            animation: rotate 10s linear infinite;
-            transform-origin: center;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 80px;
+            background: linear-gradient(to bottom, #9dc183, #7a9d54);
+            border-radius: 2px;
+            z-index: 1;
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg) translateX(80px) rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg) translateX(80px) rotate(-360deg);
-            }
+        .leaf {
+            position: absolute;
+            width: 20px;
+            height: 12px;
+            background: #9dc183;
+            border-radius: 0 100% 100% 0;
+            z-index: 1;
         }
 
-        .rose:nth-child(1) { animation-delay: 0s; }
-        .rose:nth-child(2) { animation-delay: -2s; }
-        .rose:nth-child(3) { animation-delay: -4s; }
-        .rose:nth-child(4) { animation-delay: -6s; }
-        .rose:nth-child(5) { animation-delay: -8s; }
-
-        /* Botón especial */
-        .love-button {
-            background: linear-gradient(135deg, #ff1493, #ff69b4);
-            color: white;
-            border: none;
-            padding: 1.5rem 3rem;
-            font-size: 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
-            transition: all 0.3s ease;
-            margin-top: 2rem;
-            font-family: 'Georgia', serif;
+        .leaf.left {
+            bottom: 50px;
+            left: 96px;
+            transform: rotate(-30deg);
         }
 
-        .love-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6);
+        .leaf.right {
+            bottom: 35px;
+            right: 96px;
+            transform: rotate(30deg) scaleX(-1);
         }
 
-        .love-button:active {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        /* Mensaje oculto */
-        .hidden-message {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(255, 105, 180, 0.95);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        .hidden-message.show {
+        .flower-bloom {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bloomGrow 3s ease-in-out infinite;
+            z-index: 2;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes bloomGrow {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.05) rotate(5deg);
+            }
         }
 
-        .message-content {
-            background: white;
-            padding: 3rem;
-            border-radius: 30px;
-            max-width: 600px;
-            animation: scaleIn 0.5s ease-out;
+        .petal {
+            position: absolute;
+            width: 20px;
+            height: 28px;
+            border-radius: 50% 50% 50% 0;
+            opacity: 0.9;
         }
 
-        @keyframes scaleIn {
+        .petal:nth-child(1) {
+            transform: rotate(0deg) translateY(-18px);
+        }
+
+        .petal:nth-child(2) {
+            transform: rotate(72deg) translateY(-18px);
+        }
+
+        .petal:nth-child(3) {
+            transform: rotate(144deg) translateY(-18px);
+        }
+
+        .petal:nth-child(4) {
+            transform: rotate(216deg) translateY(-18px);
+        }
+
+        .petal:nth-child(5) {
+            transform: rotate(288deg) translateY(-18px);
+        }
+
+        .flower-center {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Flores individuales con colores pasteles */
+        .flower-bloom:nth-child(1) {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 0s;
+        }
+
+        .flower-bloom:nth-child(1) .petal {
+            background: linear-gradient(135deg, #ffd6e8, #ffb3d9);
+        }
+
+        .flower-bloom:nth-child(1) .flower-center {
+            background: #ffeb99;
+        }
+
+        .flower-bloom:nth-child(2) {
+            top: 35px;
+            left: 30%;
+            animation-delay: 0.3s;
+        }
+
+        .flower-bloom:nth-child(2) .petal {
+            background: linear-gradient(135deg, #c8b6ff, #b19cd9);
+        }
+
+        .flower-bloom:nth-child(2) .flower-center {
+            background: #fff4b3;
+        }
+
+        .flower-bloom:nth-child(3) {
+            top: 35px;
+            right: 30%;
+            animation-delay: 0.6s;
+        }
+
+        .flower-bloom:nth-child(3) .petal {
+            background: linear-gradient(135deg, #bfe3ff, #a8d5ff);
+        }
+
+        .flower-bloom:nth-child(3) .flower-center {
+            background: #ffe0b3;
+        }
+
+        .flower-bloom:nth-child(4) {
+            top: 55px;
+            left: 20%;
+            animation-delay: 0.9s;
+        }
+
+        .flower-bloom:nth-child(4) .petal {
+            background: linear-gradient(135deg, #ffd4b3, #ffccb3);
+        }
+
+        .flower-bloom:nth-child(4) .flower-center {
+            background: #fff9e6;
+        }
+
+        .flower-bloom:nth-child(5) {
+            top: 55px;
+            right: 20%;
+            animation-delay: 1.2s;
+        }
+
+        .flower-bloom:nth-child(5) .petal {
+            background: linear-gradient(135deg, #ffb3c1, #ffc4d0);
+        }
+
+        .flower-bloom:nth-child(5) .flower-center {
+            background: #fffacd;
+        }
+
+        .flower-bloom:nth-child(6) {
+            top: 75px;
+            left: 35%;
+            animation-delay: 1.5s;
+        }
+
+        .flower-bloom:nth-child(6) .petal {
+            background: linear-gradient(135deg, #d4b5ff, #e0ccff);
+        }
+
+        .flower-bloom:nth-child(6) .flower-center {
+            background: #ffebb3;
+        }
+
+        .flower-bloom:nth-child(7) {
+            top: 75px;
+            right: 35%;
+            animation-delay: 1.8s;
+        }
+
+        .flower-bloom:nth-child(7) .petal {
+            background: linear-gradient(135deg, #b3e5fc, #cceeff);
+        }
+
+        .flower-bloom:nth-child(7) .flower-center {
+            background: #ffe5b3;
+        }
+
+        /* Decoración superior e inferior */
+        .letter-container::before,
+        .letter-container::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 1px;
+            width: 60px;
+            background: linear-gradient(to right, transparent, #d4a5a5, transparent);
+        }
+
+        .letter-container::before {
+            top: 2rem;
+        }
+
+        .letter-container::after {
+            bottom: 2rem;
+        }
+
+        /* Encabezado */
+        .letter-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        .letter-to {
+            font-size: 0.9rem;
+            color: #999;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .letter-name {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .letter-name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: #d4a5a5;
+        }
+
+        .letter-subtitle {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 1.5rem;
+        }
+
+        /* Contenido de la carta */
+        .letter-content {
+            animation: fadeIn 3s ease-out;
+        }
+
+        .letter-paragraph {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #34495e;
+            margin-bottom: 2rem;
+            text-align: justify;
+            animation: typeLetter 0.5s ease-out backwards;
+        }
+
+        .letter-paragraph:nth-child(1) { animation-delay: 0.5s; }
+        .letter-paragraph:nth-child(2) { animation-delay: 1s; }
+        .letter-paragraph:nth-child(3) { animation-delay: 1.5s; }
+        .letter-paragraph:nth-child(4) { animation-delay: 2s; }
+
+        @keyframes typeLetter {
             from {
-                transform: scale(0.5);
+                opacity: 0;
+                transform: translateX(-20px);
             }
             to {
-                transform: scale(1);
+                opacity: 1;
+                transform: translateX(0);
             }
         }
 
-        .close-button {
-            background: #ff1493;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            cursor: pointer;
-            margin-top: 2rem;
+        .letter-paragraph.indent {
+            text-indent: 2rem;
+        }
+
+        .letter-emphasis {
+            font-style: italic;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        /* Firma */
+        .letter-signature {
+            margin-top: 4rem;
+            text-align: right;
+            animation: fadeIn 4s ease-out;
+        }
+
+        .signature-line {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-name {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .signature-heart {
             font-size: 1.2rem;
+            color: #c56c6c;
+            margin-top: 0.5rem;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+        }
+
+        /* Detalles minimalistas */
+        .letter-date {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #95a5a6;
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+
+        .letter-ps {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ecf0f1;
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        /* Quote especial */
+        .letter-quote {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-left: 3px solid #d4a5a5;
+            font-style: italic;
+            color: #555;
+            animation: fadeIn 3.5s ease-out;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            .letter-container {
+                padding: 3rem 2rem;
             }
-            
-            h2 {
+
+            .letter-name {
                 font-size: 2rem;
             }
-            
-            p {
-                font-size: 1.2rem;
+
+            .letter-paragraph {
+                font-size: 1rem;
+                line-height: 1.8;
             }
-            
-            .time-unit {
-                min-width: 100px;
-                padding: 1.5rem;
+        }
+
+        /* Sutil animación de entrada para todo */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            
-            .time-number {
-                font-size: 2rem;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
-    <div class="parallax-container" id="container">
-        <!-- Sección 1: Título Principal -->
-        <section>
-            <div class="parallax-layer parallax-back">
-                <div id="flowersBack"></div>
-            </div>
-            <div class="content">
-                <h1>❤️ Stacey ❤️</h1>
-                <h2 style="color: #ff69b4; margin-bottom: 2rem;">2 Meses Juntos</h2>
-                <div class="rose-container">
-                    <div class="rose">🌹</div>
-                    <div class="rose">🌹</div>
-                    <div class="rose">🌹</div>
-                    <div class="rose">🌹</div>
-                    <div class="rose">🌹</div>
+    <!-- Partículas de fondo -->
+    <div id="particles"></div>
+
+    <!-- Carta -->
+    <div class="letter-container">
+        <div class="letter-date">Diciembre 2024</div>
+        
+        <div class="letter-header">
+            <div class="letter-to">Para</div>
+            
+            <!-- Ramo de flores -->
+            <div class="flower-bouquet">
+                <!-- Tallo principal y hojas -->
+                <div class="flower-stem"></div>
+                <div class="leaf left"></div>
+                <div class="leaf right"></div>
+                
+                <!-- Flores -->
+                <div class="flower-bloom">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="flower-center"></div>
                 </div>
-                <p>Cada día a tu lado es un regalo especial</p>
-            </div>
-        </section>
-
-        <!-- Sección 2: Contador de Tiempo -->
-        <section>
-            <div class="parallax-layer parallax-mid">
-                <div id="heartsMid"></div>
-            </div>
-            <div class="content">
-                <h2>Llevamos juntos...</h2>
-                <div class="time-counter">
-                    <div class="time-unit">
-                        <span class="time-number" id="days">0</span>
-                        <span class="time-label">Días</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="time-number" id="hours">0</span>
-                        <span class="time-label">Horas</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="time-number" id="minutes">0</span>
-                        <span class="time-label">Minutos</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="time-number" id="seconds">0</span>
-                        <span class="time-label">Segundos</span>
-                    </div>
+                
+                <div class="flower-bloom">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="flower-center"></div>
                 </div>
-                <p>Y cada segundo cuenta una historia de amor</p>
+                
+                <div class="flower-bloom">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                
+                <div class="flower-bloom">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                
+                <div class="flower-bloom">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                
+                <div class="flower-bloom">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                
+                <div class="flower-bloom">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
             </div>
-        </section>
+            
+            <h1 class="letter-name">Stacey</h1>
+            <p class="letter-subtitle">Dos meses que se sienten como una eternidad hermosa</p>
+        </div>
 
-        <!-- Sección 3: Mensaje Final -->
-        <section>
-            <div class="parallax-layer parallax-mid">
-                <div id="heartsFinal"></div>
-            </div>
-            <div class="content">
-                <h2>Gracias por estos 2 meses</h2>
-                <p>Eres la persona más especial en mi vida.<br>
-                Cada día contigo es una aventura nueva,<br>
-                y no puedo esperar a ver qué nos depara el futuro.</p>
-                <p style="font-size: 2rem; margin: 2rem 0;">💖</p>
-                <p>Te amo más de lo que las palabras pueden expresar</p>
-                <button class="love-button" onclick="showMessage()">
-                    💌 Un mensaje especial para ti 💌
-                </button>
-            </div>
-        </section>
-    </div>
+        <div class="letter-content">
+            <p class="letter-paragraph indent">
+                Cuando intento poner en palabras lo que siento por ti, me doy cuenta de que el lenguaje 
+                se queda corto. Hay emociones que no caben en frases, hay sentimientos que solo se entienden 
+                en el silencio de una mirada o en la calidez de un abrazo. Pero hoy quiero intentarlo, 
+                porque mereces saber lo especial que eres para mí.
+            </p>
 
-    <!-- Mensaje oculto -->
-    <div class="hidden-message" id="hiddenMessage">
-        <div class="message-content">
-            <h2 style="color: #ff1493; margin-bottom: 2rem;">Para Stacey, el amor de mi vida 💕</h2>
-            <p>Estos dos meses han sido los más increíbles de mi vida. Cada momento contigo es mágico, y cada día me enamoro más de ti.</p>
-            <p>Gracias por tu sonrisa, por tu amor, por ser tú. Eres mi persona favorita y mi mejor compañía.</p>
-            <p style="font-size: 2rem; margin: 2rem 0;">Te amo infinito 💖</p>
-            <button class="close-button" onclick="hideMessage()">Cerrar 💕</button>
+            <p class="letter-paragraph">
+                Estos dos meses han sido los más increíbles de mi vida. Contigo he descubierto que el amor 
+                no es solo una palabra, es una <span class="letter-emphasis">sensación</span> que se siente 
+                en cada latido, en cada sonrisa, en cada momento compartido. Eres la persona con la que 
+                quiero hablar de todo y de nada, la única con la que el tiempo parece detenerse.
+            </p>
+
+            <div class="letter-quote">
+                "En un mundo lleno de ruido, tu voz es la única melodía que quiero escuchar."
+            </div>
+
+            <p class="letter-paragraph">
+                Me enamoro de ti cada día un poco más. De tu risa, de tu forma de ver el mundo, de cómo 
+                haces que todo sea más bonito solo con estar presente. Eres <span class="letter-emphasis">
+                mi lugar seguro</span>, mi hogar, mi persona favorita en este universo infinito.
+            </p>
+
+            <p class="letter-paragraph">
+                Gracias por elegirme, por confiar en mí, por construir esto conmigo. Cada momento a tu lado 
+                es un regalo que guardo con cuidado en mi corazón. No sé qué nos depara el futuro, pero sé 
+                que quiero vivirlo contigo, descubriendo juntos cada capítulo de esta historia que apenas 
+                comienza.
+            </p>
+
+            <p class="letter-paragraph" style="margin-top: 3rem; text-align: center; font-size: 1.2rem;">
+                Te amo infinitamente, en cada segundo, en cada respiración.
+            </p>
+        </div>
+
+        <div class="letter-signature">
+            <div class="signature-line">Con todo mi amor,</div>
+            <div class="signature-name">Esaú</div>
+            <div class="signature-heart">♡</div>
+        </div>
+
+        <div class="letter-ps">
+            P.D. — Este es solo el comienzo de nuestra historia. Lo mejor está por venir.
         </div>
     </div>
 
     <script>
-        // Fecha de inicio de la relación - 2 meses antes de hoy
-        const startDate = new Date('2024-10-12T00:00:00'); // Ajusta esta fecha exacta
-
-        // Actualizar contador
-        function updateCounter() {
-            const now = new Date();
-            const diff = now - startDate;
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
-        }
-
-        setInterval(updateCounter, 1000);
-        updateCounter();
-
-        // Crear flores flotantes
-        const flowerEmojis = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐', '🏵️'];
+        // Crear partículas sutiles en el fondo
+        const particlesContainer = document.getElementById('particles');
+        const symbols = ['·', '•', '○', '◦'];
         
-        function createFlower(container) {
-            const flower = document.createElement('div');
-            flower.className = 'flower';
-            flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
-            flower.style.left = Math.random() * 100 + '%';
-            flower.style.animationDuration = (Math.random() * 4 + 4) + 's';
-            flower.style.animationDelay = Math.random() * 5 + 's';
-            container.appendChild(flower);
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.fontSize = (Math.random() * 10 + 5) + 'px';
+            particle.style.color = `rgba(${180 + Math.random() * 50}, ${150 + Math.random() * 50}, ${150 + Math.random() * 50}, 0.3)`;
+            particle.style.setProperty('--x', (Math.random() * 100 - 50) + 'px');
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
             
-            setTimeout(() => flower.remove(), 10000);
-        }
-
-        // Crear corazones flotantes
-        function createHeart(container) {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.textContent = ['💕', '💖', '💗', '💓', '💝'][Math.floor(Math.random() * 5)];
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-            heart.style.animationDelay = Math.random() * 3 + 's';
-            container.appendChild(heart);
+            particlesContainer.appendChild(particle);
             
-            setTimeout(() => heart.remove(), 12000);
+            setTimeout(() => particle.remove(), 20000);
         }
 
-        // Inicializar animaciones
-        const flowersBack = document.getElementById('flowersBack');
-        const heartsMid = document.getElementById('heartsMid');
-        const heartsFinal = document.getElementById('heartsFinal');
-
-        setInterval(() => {
-            createFlower(flowersBack);
-        }, 500);
-
-        setInterval(() => {
-            createHeart(heartsMid);
-            createHeart(heartsFinal);
-        }, 800);
-
-        // Mensaje oculto
-        function showMessage() {
-            document.getElementById('hiddenMessage').classList.add('show');
+        // Crear partículas iniciales y continuas
+        for (let i = 0; i < 15; i++) {
+            setTimeout(() => createParticle(), i * 500);
         }
 
-        function hideMessage() {
-            document.getElementById('hiddenMessage').classList.remove('show');
-        }
+        setInterval(createParticle, 2000);
 
-        // Efecto parallax suave
-        const container = document.getElementById('container');
+        // Efecto de typing sutil en los párrafos
+        const paragraphs = document.querySelectorAll('.letter-paragraph');
         
-        container.addEventListener('scroll', () => {
-            const scrolled = container.scrollTop;
-            const layers = document.querySelectorAll('.parallax-layer');
-            
-            layers.forEach(layer => {
-                const speed = layer.classList.contains('parallax-back') ? 0.5 : 
-                             layer.classList.contains('parallax-mid') ? 0.3 : 0;
-                layer.style.transform = `translateY(${scrolled * speed}px)`;
-            });
+        paragraphs.forEach((p, index) => {
+            setTimeout(() => {
+                p.style.animation = 'typeLetter 1s ease-out';
+            }, index * 300);
         });
-
-        // Crear flores iniciales
-        for (let i = 0; i < 10; i++) {
-            setTimeout(() => {
-                createFlower(flowersBack);
-            }, i * 200);
-        }
-
-        for (let i = 0; i < 8; i++) {
-            setTimeout(() => {
-                createHeart(heartsMid);
-                createHeart(heartsFinal);
-            }, i * 300);
-        }
     </script>
 </body>
 </html>
