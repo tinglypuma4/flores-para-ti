@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Stacey - 2 Meses ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe5f1 100%);
+        }
+
+        /* Contenedor parallax */
+        .parallax-container {
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            perspective: 1px;
+            scroll-behavior: smooth;
+        }
+
+        /* Secciones */
+        section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Capa de parallax */
+        .parallax-layer {
+            position: absolute;
+            inset: 0;
+            transform-style: preserve-3d;
+        }
+
+        .parallax-back {
+            transform: translateZ(-2px) scale(3);
+        }
+
+        .parallax-mid {
+            transform: translateZ(-1px) scale(2);
+        }
+
+        .parallax-front {
+            transform: translateZ(0);
+        }
+
+        /* Flores flotantes */
+        .flower {
+            position: absolute;
+            font-size: 3rem;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Corazones flotantes */
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            color: #ff69b4;
+            animation: heartFloat 8s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(50vh) scale(1.2);
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-20vh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Contenido */
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #ff1493;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        h2 {
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #8b4789;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contador de tiempo */
+        .time-counter {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            min-width: 120px;
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .time-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff1493;
+            display: block;
+        }
+
+        .time-label {
+            font-size: 1rem;
+            color: #8b4789;
+            text-transform: uppercase;
+        }
+
+        /* Rosas giratorias */
+        .rose-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 3rem auto;
+        }
+
+        .rose {
+            position: absolute;
+            font-size: 4rem;
+            animation: rotate 10s linear infinite;
+            transform-origin: center;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg) translateX(80px) rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg) translateX(80px) rotate(-360deg);
+            }
+        }
+
+        .rose:nth-child(1) { animation-delay: 0s; }
+        .rose:nth-child(2) { animation-delay: -2s; }
+        .rose:nth-child(3) { animation-delay: -4s; }
+        .rose:nth-child(4) { animation-delay: -6s; }
+        .rose:nth-child(5) { animation-delay: -8s; }
+
+        /* Botón especial */
+        .love-button {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .love-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6);
+        }
+
+        .love-button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* Mensaje oculto */
+        .hidden-message {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 105, 180, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .hidden-message.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .message-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            max-width: 600px;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.5);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .close-button {
+            background: #ff1493;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1.2rem;
+            }
+            
+            .time-unit {
+                min-width: 100px;
+                padding: 1.5rem;
+            }
+            
+            .time-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax-container" id="container">
+        <!-- Sección 1: Título Principal -->
+        <section>
+            <div class="parallax-layer parallax-back">
+                <div id="flowersBack"></div>
+            </div>
+            <div class="content">
+                <h1>❤️ Stacey ❤️</h1>
+                <h2 style="color: #ff69b4; margin-bottom: 2rem;">2 Meses Juntos</h2>
+                <div class="rose-container">
+                    <div class="rose">🌹</div>
+                    <div class="rose">🌹</div>
+                    <div class="rose">🌹</div>
+                    <div class="rose">🌹</div>
+                    <div class="rose">🌹</div>
+                </div>
+                <p>Cada día a tu lado es un regalo especial</p>
+            </div>
+        </section>
+
+        <!-- Sección 2: Contador de Tiempo -->
+        <section>
+            <div class="parallax-layer parallax-mid">
+                <div id="heartsMid"></div>
+            </div>
+            <div class="content">
+                <h2>Llevamos juntos...</h2>
+                <div class="time-counter">
+                    <div class="time-unit">
+                        <span class="time-number" id="days">0</span>
+                        <span class="time-label">Días</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-number" id="hours">0</span>
+                        <span class="time-label">Horas</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-number" id="minutes">0</span>
+                        <span class="time-label">Minutos</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-number" id="seconds">0</span>
+                        <span class="time-label">Segundos</span>
+                    </div>
+                </div>
+                <p>Y cada segundo cuenta una historia de amor</p>
+            </div>
+        </section>
+
+        <!-- Sección 3: Mensaje Final -->
+        <section>
+            <div class="parallax-layer parallax-mid">
+                <div id="heartsFinal"></div>
+            </div>
+            <div class="content">
+                <h2>Gracias por estos 2 meses</h2>
+                <p>Eres la persona más especial en mi vida.<br>
+                Cada día contigo es una aventura nueva,<br>
+                y no puedo esperar a ver qué nos depara el futuro.</p>
+                <p style="font-size: 2rem; margin: 2rem 0;">💖</p>
+                <p>Te amo más de lo que las palabras pueden expresar</p>
+                <button class="love-button" onclick="showMessage()">
+                    💌 Un mensaje especial para ti 💌
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Mensaje oculto -->
+    <div class="hidden-message" id="hiddenMessage">
+        <div class="message-content">
+            <h2 style="color: #ff1493; margin-bottom: 2rem;">Para Stacey, el amor de mi vida 💕</h2>
+            <p>Estos dos meses han sido los más increíbles de mi vida. Cada momento contigo es mágico, y cada día me enamoro más de ti.</p>
+            <p>Gracias por tu sonrisa, por tu amor, por ser tú. Eres mi persona favorita y mi mejor compañía.</p>
+            <p style="font-size: 2rem; margin: 2rem 0;">Te amo infinito 💖</p>
+            <button class="close-button" onclick="hideMessage()">Cerrar 💕</button>
+        </div>
+    </div>
+
+    <script>
+        // Fecha de inicio de la relación - 2 meses antes de hoy
+        const startDate = new Date('2024-10-12T00:00:00'); // Ajusta esta fecha exacta
+
+        // Actualizar contador
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // Crear flores flotantes
+        const flowerEmojis = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐', '🏵️'];
+        
+        function createFlower(container) {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+            flower.style.left = Math.random() * 100 + '%';
+            flower.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            flower.style.animationDelay = Math.random() * 5 + 's';
+            container.appendChild(flower);
+            
+            setTimeout(() => flower.remove(), 10000);
+        }
+
+        // Crear corazones flotantes
+        function createHeart(container) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = ['💕', '💖', '💗', '💓', '💝'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            container.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 12000);
+        }
+
+        // Inicializar animaciones
+        const flowersBack = document.getElementById('flowersBack');
+        const heartsMid = document.getElementById('heartsMid');
+        const heartsFinal = document.getElementById('heartsFinal');
+
+        setInterval(() => {
+            createFlower(flowersBack);
+        }, 500);
+
+        setInterval(() => {
+            createHeart(heartsMid);
+            createHeart(heartsFinal);
+        }, 800);
+
+        // Mensaje oculto
+        function showMessage() {
+            document.getElementById('hiddenMessage').classList.add('show');
+        }
+
+        function hideMessage() {
+            document.getElementById('hiddenMessage').classList.remove('show');
+        }
+
+        // Efecto parallax suave
+        const container = document.getElementById('container');
+        
+        container.addEventListener('scroll', () => {
+            const scrolled = container.scrollTop;
+            const layers = document.querySelectorAll('.parallax-layer');
+            
+            layers.forEach(layer => {
+                const speed = layer.classList.contains('parallax-back') ? 0.5 : 
+                             layer.classList.contains('parallax-mid') ? 0.3 : 0;
+                layer.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Crear flores iniciales
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+                createFlower(flowersBack);
+            }, i * 200);
+        }
+
+        for (let i = 0; i < 8; i++) {
+            setTimeout(() => {
+                createHeart(heartsMid);
+                createHeart(heartsFinal);
+            }, i * 300);
+        }
+    </script>
+</body>
+</html>
