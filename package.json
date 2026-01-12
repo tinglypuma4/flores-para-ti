@@ -4,8 +4,7 @@
   "description": "Carta de amor para Stacey",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "mkdir -p dist && cp aniversario-2-meses.html dist/index.html"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2"
