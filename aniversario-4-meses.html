@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Stacey, con todo mi amor</title>
+    <title>Cuarto Mes - Para Stacey</title>
     <style>
         * {
             margin: 0;
@@ -122,11 +122,11 @@
             }
         }
 
-        /* Ramo de flores */
+        /* Ramo de flores - florecimiento completo */
         .flower-bouquet {
             position: relative;
             width: 200px;
-            height: 180px;
+            height: 200px;
             margin: 0 auto 2rem auto;
             animation: floatBouquet 4s ease-in-out infinite;
         }
@@ -146,37 +146,49 @@
             left: 50%;
             transform: translateX(-50%);
             width: 4px;
-            height: 80px;
-            background: linear-gradient(to bottom, #9dc183, #7a9d54);
+            height: 90px;
+            background: linear-gradient(to bottom, #7a9d54, #5a7d34);
             border-radius: 2px;
             z-index: 1;
         }
 
         .leaf {
             position: absolute;
-            width: 20px;
-            height: 12px;
-            background: #9dc183;
+            width: 25px;
+            height: 14px;
+            background: #7a9d54;
             border-radius: 0 100% 100% 0;
             z-index: 1;
         }
 
         .leaf.left {
             bottom: 50px;
-            left: 96px;
+            left: 90px;
             transform: rotate(-30deg);
+        }
+
+        .leaf.left.lower {
+            bottom: 30px;
+            left: 85px;
+            transform: rotate(-40deg);
         }
 
         .leaf.right {
             bottom: 35px;
-            right: 96px;
+            right: 90px;
             transform: rotate(30deg) scaleX(-1);
+        }
+
+        .leaf.right.lower {
+            bottom: 15px;
+            right: 85px;
+            transform: rotate(40deg) scaleX(-1);
         }
 
         .flower-bloom {
             position: absolute;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -190,112 +202,112 @@
                 transform: scale(1) rotate(0deg);
             }
             50% {
-                transform: scale(1.05) rotate(5deg);
+                transform: scale(1.08) rotate(8deg);
             }
         }
 
         .petal {
             position: absolute;
-            width: 20px;
-            height: 28px;
+            width: 22px;
+            height: 32px;
             border-radius: 50% 50% 50% 0;
             opacity: 0.9;
         }
 
         .petal:nth-child(1) {
-            transform: rotate(0deg) translateY(-18px);
+            transform: rotate(0deg) translateY(-20px);
         }
 
         .petal:nth-child(2) {
-            transform: rotate(72deg) translateY(-18px);
+            transform: rotate(72deg) translateY(-20px);
         }
 
         .petal:nth-child(3) {
-            transform: rotate(144deg) translateY(-18px);
+            transform: rotate(144deg) translateY(-20px);
         }
 
         .petal:nth-child(4) {
-            transform: rotate(216deg) translateY(-18px);
+            transform: rotate(216deg) translateY(-20px);
         }
 
         .petal:nth-child(5) {
-            transform: rotate(288deg) translateY(-18px);
+            transform: rotate(288deg) translateY(-20px);
         }
 
         .flower-center {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             position: relative;
             z-index: 3;
         }
 
-        /* Flores individuales con colores pasteles */
+        /* Flores con más flores para representar la abundancia */
         .flower-bloom:nth-child(1) {
-            top: 20px;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
             animation-delay: 0s;
         }
 
         .flower-bloom:nth-child(1) .petal {
-            background: linear-gradient(135deg, #ffd6e8, #ffb3d9);
+            background: linear-gradient(135deg, #ff6bb5, #ff4a9d);
         }
 
         .flower-bloom:nth-child(1) .flower-center {
-            background: #ffeb99;
+            background: #ffd700;
         }
 
         .flower-bloom:nth-child(2) {
-            top: 35px;
-            left: 30%;
+            top: 30px;
+            left: 25%;
             animation-delay: 0.3s;
         }
 
         .flower-bloom:nth-child(2) .petal {
-            background: linear-gradient(135deg, #c8b6ff, #b19cd9);
+            background: linear-gradient(135deg, #b19cd9, #9370db);
         }
 
         .flower-bloom:nth-child(2) .flower-center {
-            background: #fff4b3;
+            background: #ffe4b5;
         }
 
         .flower-bloom:nth-child(3) {
-            top: 35px;
-            right: 30%;
+            top: 30px;
+            right: 25%;
             animation-delay: 0.6s;
         }
 
         .flower-bloom:nth-child(3) .petal {
-            background: linear-gradient(135deg, #bfe3ff, #a8d5ff);
+            background: linear-gradient(135deg, #87ceeb, #4da6d4);
         }
 
         .flower-bloom:nth-child(3) .flower-center {
-            background: #ffe0b3;
+            background: #ffdab9;
         }
 
         .flower-bloom:nth-child(4) {
-            top: 55px;
-            left: 20%;
+            top: 60px;
+            left: 15%;
             animation-delay: 0.9s;
         }
 
         .flower-bloom:nth-child(4) .petal {
-            background: linear-gradient(135deg, #ffd4b3, #ffccb3);
+            background: linear-gradient(135deg, #ffb366, #ff8c42);
         }
 
         .flower-bloom:nth-child(4) .flower-center {
-            background: #fff9e6;
+            background: #fff8dc;
         }
 
         .flower-bloom:nth-child(5) {
-            top: 55px;
-            right: 20%;
+            top: 60px;
+            right: 15%;
             animation-delay: 1.2s;
         }
 
         .flower-bloom:nth-child(5) .petal {
-            background: linear-gradient(135deg, #ffb3c1, #ffc4d0);
+            background: linear-gradient(135deg, #ff8ba7, #ff6b9d);
         }
 
         .flower-bloom:nth-child(5) .flower-center {
@@ -303,31 +315,46 @@
         }
 
         .flower-bloom:nth-child(6) {
-            top: 75px;
-            left: 35%;
+            top: 90px;
+            left: 30%;
             animation-delay: 1.5s;
         }
 
         .flower-bloom:nth-child(6) .petal {
-            background: linear-gradient(135deg, #d4b5ff, #e0ccff);
+            background: linear-gradient(135deg, #c8a2ff, #b088f9);
         }
 
         .flower-bloom:nth-child(6) .flower-center {
-            background: #ffebb3;
+            background: #ffe4b5;
         }
 
         .flower-bloom:nth-child(7) {
-            top: 75px;
-            right: 35%;
+            top: 90px;
+            right: 30%;
             animation-delay: 1.8s;
         }
 
         .flower-bloom:nth-child(7) .petal {
-            background: linear-gradient(135deg, #b3e5fc, #cceeff);
+            background: linear-gradient(135deg, #7ec8e3, #5eb8d8);
         }
 
         .flower-bloom:nth-child(7) .flower-center {
-            background: #ffe5b3;
+            background: #ffdead;
+        }
+
+        .flower-bloom:nth-child(8) {
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 2.1s;
+        }
+
+        .flower-bloom:nth-child(8) .petal {
+            background: linear-gradient(135deg, #ffb3d9, #ff99c8);
+        }
+
+        .flower-bloom:nth-child(8) .flower-center {
+            background: #fff0f5;
         }
 
         /* Decoración superior e inferior */
@@ -411,6 +438,10 @@
         .letter-paragraph:nth-child(2) { animation-delay: 1s; }
         .letter-paragraph:nth-child(3) { animation-delay: 1.5s; }
         .letter-paragraph:nth-child(4) { animation-delay: 2s; }
+        .letter-paragraph:nth-child(5) { animation-delay: 2.5s; }
+        .letter-paragraph:nth-child(6) { animation-delay: 3s; }
+        .letter-paragraph:nth-child(7) { animation-delay: 3.5s; }
+        .letter-paragraph:nth-child(8) { animation-delay: 4s; }
 
         @keyframes typeLetter {
             from {
@@ -484,7 +515,55 @@
             font-style: italic;
         }
 
-        /* Quote especial */
+        /* Quotes especiales con referencias musicales en ROSA PASTEL */
+        .music-quote {
+            margin: 2.5rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #ffe4f0, #ffd6e8);
+            border-left: 4px solid #ffb3d9;
+            border-radius: 8px;
+            font-style: italic;
+            color: #6b4566;
+            animation: fadeIn 3.5s ease-out;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 182, 217, 0.2);
+        }
+
+        .music-quote::before {
+            content: '♪';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            color: #ffb3d9;
+            animation: musicNote 2s ease-in-out infinite;
+        }
+
+        @keyframes musicNote {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-5px) rotate(10deg);
+            }
+        }
+
+        .music-quote-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+            color: #8b5a86;
+        }
+
+        .music-quote-source {
+            font-size: 0.85rem;
+            color: #b88fb3;
+            text-align: right;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        /* Quote normal */
         .letter-quote {
             margin: 3rem 0;
             padding: 2rem;
@@ -493,6 +572,13 @@
             font-style: italic;
             color: #555;
             animation: fadeIn 3.5s ease-out;
+        }
+
+        /* Highlight especial */
+        .highlight {
+            background: linear-gradient(120deg, #ffe4f0 0%, #fff9f0 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
         }
 
         /* Responsive */
@@ -523,17 +609,9 @@
                 font-size: 1rem;
                 line-height: 1.8;
             }
-        }
 
-        /* Sutil animación de entrada para todo */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .music-quote-text {
+                font-size: 1rem;
             }
         }
     </style>
@@ -541,9 +619,9 @@
 <body>
     <!-- Navbar de navegación -->
     <nav class="navbar">
-        <button class="nav-button" disabled>← Anterior</button>
+        <a href="aniversario-3-meses.html" class="nav-button">← Anterior</a>
         <a href="index.html" class="nav-button home">🏠 Menú Principal</a>
-        <a href="aniversario-3-meses.html" class="nav-button">Siguiente →</a>
+        <button class="nav-button" disabled>Siguiente →</button>
     </nav>
 
     <!-- Partículas de fondo -->
@@ -551,19 +629,21 @@
 
     <!-- Carta -->
     <div class="letter-container">
-        <div class="letter-date">Diciembre 2025</div>
-        
+        <div class="letter-date">Febrero 2026</div>
+
         <div class="letter-header">
             <div class="letter-to">Para</div>
-            
-            <!-- Ramo de flores -->
+
+            <!-- Ramo de flores - más florecido -->
             <div class="flower-bouquet">
                 <!-- Tallo principal y hojas -->
                 <div class="flower-stem"></div>
                 <div class="leaf left"></div>
+                <div class="leaf left lower"></div>
                 <div class="leaf right"></div>
-                
-                <!-- Flores -->
+                <div class="leaf right lower"></div>
+
+                <!-- Flores en mayor cantidad y esplendor -->
                 <div class="flower-bloom">
                     <div class="petal"></div>
                     <div class="petal"></div>
@@ -572,7 +652,7 @@
                     <div class="petal"></div>
                     <div class="flower-center"></div>
                 </div>
-                
+
                 <div class="flower-bloom">
                     <div class="petal"></div>
                     <div class="petal"></div>
@@ -581,7 +661,7 @@
                     <div class="petal"></div>
                     <div class="flower-center"></div>
                 </div>
-                
+
                 <div class="flower-bloom">
                     <div class="petal"></div>
                     <div class="petal"></div>
@@ -590,7 +670,7 @@
                     <div class="petal"></div>
                     <div class="flower-center"></div>
                 </div>
-                
+
                 <div class="flower-bloom">
                     <div class="petal"></div>
                     <div class="petal"></div>
@@ -599,7 +679,7 @@
                     <div class="petal"></div>
                     <div class="flower-center"></div>
                 </div>
-                
+
                 <div class="flower-bloom">
                     <div class="petal"></div>
                     <div class="petal"></div>
@@ -608,7 +688,7 @@
                     <div class="petal"></div>
                     <div class="flower-center"></div>
                 </div>
-                
+
                 <div class="flower-bloom">
                     <div class="petal"></div>
                     <div class="petal"></div>
@@ -617,7 +697,16 @@
                     <div class="petal"></div>
                     <div class="flower-center"></div>
                 </div>
-                
+
+                <div class="flower-bloom">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+
                 <div class="flower-bloom">
                     <div class="petal"></div>
                     <div class="petal"></div>
@@ -627,64 +716,111 @@
                     <div class="flower-center"></div>
                 </div>
             </div>
-            
+
             <h1 class="letter-name">Stacey</h1>
-            <p class="letter-subtitle">Dos meses que se sienten como una eternidad hermosa</p>
+            <p class="letter-subtitle">Cuatro meses construyendo un mundo juntos, donde tú eres mi mejor versión</p>
         </div>
 
         <div class="letter-content">
             <p class="letter-paragraph indent">
-                Cuando intento poner en palabras lo que siento por ti, me doy cuenta de que el lenguaje 
-                se queda corto. Hay emociones que no caben en frases, hay sentimientos que solo se entienden 
-                en el silencio de una mirada o en la calidez de un abrazo. Pero hoy quiero intentarlo, 
-                porque mereces saber lo especial que eres para mí.
+                Este cuarto mes fue el del florecimiento. Del 12 de enero al 12 de febrero, sentí cómo todo lo que 
+                plantamos juntos comenzó a crecer con una fuerza que no esperaba. No fue casualidad, fue <span class="letter-emphasis">
+                construcción</span>. Nuestras vidas empezaron a fusionarse de verdad, no solo emocionalmente, sino en 
+                <span class="letter-emphasis">cada aspecto, en cada rincón</span>.
             </p>
 
             <p class="letter-paragraph">
-                Estos dos meses han sido los más increíbles de mi vida. Contigo he descubierto que el amor 
-                no es solo una palabra, es una <span class="letter-emphasis">sensación</span> que se siente 
-                en cada latido, en cada sonrisa, en cada momento compartido. Eres la persona con la que 
-                quiero hablar de todo y de nada, la única con la que el tiempo parece detenerse.
+                Cuando decidimos empezar a ir al gym juntos, no era solo sobre ejercicio. Era sobre querernos lo suficiente 
+                como para <span class="letter-emphasis">cuidar de nosotros mismos</span>. Cada sesión fue un recordatorio de 
+                que estamos construyendo algo que durará, algo fuerte, algo sano. Y lo más bonito es que tú estabas ahí, 
+                apoyándome, creyendo en mí, incluso cuando yo dudaba.
             </p>
 
-            <div class="letter-quote">
-                "En un mundo lleno de ruido, tu voz es la única melodía que quiero escuchar."
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "Contigo aprendes a amarte, a valorarte, a verte como yo te veo"
+                </div>
             </div>
 
             <p class="letter-paragraph">
-                Me enamoro de ti cada día un poco más. De tu risa, de tu forma de ver el mundo, de cómo 
-                haces que todo sea más bonito solo con estar presente. Eres <span class="letter-emphasis">
-                mi lugar seguro</span>, mi hogar, mi persona favorita en este universo infinito.
+                Los negocios también encontraron su camino. SAYUX, aquello que soñamos juntos, finalmente tiene cabeza y 
+                pies. Tiene dirección, tiene propósito. Y lo más increíble es verte a ti en cada proyecto, en cada decisión. 
+                Porque aunque yo sea quien ejecuta, tú eres quien cree. Tu apoyo no es pequeño, Stacey. <span class="letter-emphasis">
+                Es el combustible que me hace seguir adelante</span>.
             </p>
 
             <p class="letter-paragraph">
-                Gracias por elegirme, por confiar en mí, por construir esto conmigo. Cada momento a tu lado 
-                es un regalo que guardo con cuidado en mi corazón. No sé qué nos depara el futuro, pero sé 
-                que quiero vivirlo contigo, descubriendo juntos cada capítulo de esta historia que apenas 
-                comienza.
+                Este mes descubrí algo que no sabía de mí: que cuando estoy contigo, me amo más. No es ego, es que tu 
+                presencia me hace sentir capaz, me hace ver mis cualidades de una forma diferente. Me presentaste canciones 
+                nuevas, ideales que no conocía, amistades que iluminan. Tu familia me abrió los brazos y sentí que <span 
+                class="letter-emphasis">pertenezco ahí</span>. Y eso, mi amor, no es un detalle menor. Eso es todo.
+            </p>
+
+            <p class="letter-paragraph">
+                Recuerdo los sábados y domingos comprando cosas para nuestra semana, planificando, eligiendo juntos. 
+                <span class="letter-emphasis">¿Sabes qué es eso?</span> Eso es vivir como si ya estuviéramos casados, sin 
+                serlo aún. Eso es construir una vida cotidiana hermosa, donde los detalles pequeños son enormes. Y me encanta 
+                cada momento de eso.
+            </p>
+
+            <p class="letter-paragraph">
+                También hubo momentos donde la comunicación se nubló, donde las palabras no salieron como debían. Pero cada 
+                vez, <span class="letter-emphasis">encontramos el dulce después del amargo</span>. Los malentendidos no fueron 
+                el final, fueron el comienzo de entendernos mejor. Y eso es una lección que este mes me enseñó: con la persona 
+                correcta, hasta los conflictos son hermosos porque nos acercan más.
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "Los cascos rosados de Stacey, cada detalle de ti que me enamoró un poco más"
+                </div>
+            </div>
+
+            <p class="letter-paragraph">
+                Cuando compré tus cascos rosados, no fue solo un regalo. Fue mi forma de decirte que veo tus sueños, que 
+                quiero consentirte, que <span class="highlight">me encanta hacerte feliz</span>. Me encanta verte sonreír por 
+                esas cosas. Y me encanta aún más tus ojos cuando me miras, porque veo en ellos que tú también ves lo que 
+                estamos construyendo.
+            </p>
+
+            <p class="letter-paragraph">
+                Lo que más me conmueve de ti es que <span class="letter-emphasis">nunca me dejaste solo</span>. En cada proyecto, 
+                en cada idea loca que he tenido, ahí estabas. Creyendo. Apoyando. Recordándome que soy capaz. Y ahora entiendo 
+                que esos proyectos no son solo míos, son <span class="letter-emphasis">nuestros</span>. Porque tú estás en cada 
+                línea de código, en cada decisión, en cada paso.
+            </p>
+
+            <p class="letter-paragraph">
+                Y luego están los nuevos lugares, las nuevas experiencias. Las salidas, los descubrimientos. Y lo que viene: 
+                ese gran evento que ya siento la emoción desde ahora. <span class="letter-emphasis">Contigo todo se siente mayor, 
+                más colorido, más vivo</span>.
             </p>
 
             <p class="letter-paragraph" style="margin-top: 3rem; text-align: center; font-size: 1.2rem;">
-                Te amo infinitamente, en cada segundo, en cada respiración.
+                Este mes fue de aprendizaje infinito. Aprendí que el amor verdadero no es solo sentimiento,
+                es <span class="letter-emphasis">construcción diaria</span>. Y contigo, cada día construimos algo más hermoso.
+                <br><br>
+                Te amo, Stacey. A ti, a nosotros, a todo lo que estamos creando.
             </p>
         </div>
 
         <div class="letter-signature">
-            <div class="signature-line">Con todo mi amor,</div>
+            <div class="signature-line">Con todo mi corazón y mis sueños,</div>
             <div class="signature-name">Esaú</div>
             <div class="signature-heart">♡</div>
         </div>
 
         <div class="letter-ps">
-            P.D. — Este es solo el comienzo de nuestra historia. Lo mejor está por venir.
+            P.D. — Aún quedan muchos meses, muchos eventos, muchas vidas que vivir juntos. Pero ya sé que será extraordinario.
+            Porque tú lo haces todo extraordinario. Feliz cuarto mes, mi amor. 💚
         </div>
     </div>
 
     <script>
         // Crear partículas sutiles en el fondo
         const particlesContainer = document.getElementById('particles');
-        const symbols = ['·', '•', '○', '◦'];
-        
+        const symbols = ['·', '•', '○', '◦', '♪', '♫'];
+
         function createParticle() {
             const particle = document.createElement('div');
             particle.className = 'particle';
@@ -695,9 +831,9 @@
             particle.style.setProperty('--x', (Math.random() * 100 - 50) + 'px');
             particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
             particle.style.animationDelay = Math.random() * 5 + 's';
-            
+
             particlesContainer.appendChild(particle);
-            
+
             setTimeout(() => particle.remove(), 20000);
         }
 
@@ -710,7 +846,7 @@
 
         // Efecto de typing sutil en los párrafos
         const paragraphs = document.querySelectorAll('.letter-paragraph');
-        
+
         paragraphs.forEach((p, index) => {
             setTimeout(() => {
                 p.style.animation = 'typeLetter 1s ease-out';
