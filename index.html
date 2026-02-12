@@ -174,6 +174,13 @@
             }
         }
 
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+        .card:nth-child(4) { animation-delay: 0.8s; }
+        .card:nth-child(5) { animation-delay: 1s; }
+        .card:nth-child(6) { animation-delay: 1.2s; }
+
         .card-icon {
             font-size: 3.5rem;
             text-align: center;
@@ -325,6 +332,33 @@
                 gap: 2rem;
             }
         }
+
+        /* Indicador de nueva carta */
+        .new-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -341,92 +375,49 @@
 
         <!-- Grid de cartas -->
         <div class="cards-grid">
-
-            <article class="card coming-soon" >
+            <!-- Carta 1: Aniversario 2 meses -->
+            <article class="card">
                 <div class="card-icon">🌸</div>
                 <div class="card-date">Diciembre 2024</div>
-                <h2 class="card-title">2 Meses Juntos</h2>
-                <p class="card-description">Dos meses que se sienten como una eternidad hermosa. Una carta sobre el amor que crece cada día.</p>
-                <button class="card-button">Muy Pronto...</button>
+                <h2 class="card-title">Dos Meses Juntos</h2>
+                <p class="card-description">
+                    Dos meses que se sienten como una eternidad hermosa.
+                    Una carta sobre el amor que crece cada día.
+                </p>
+                <a href="aniversario-2-meses.html" class="card-button">Leer Carta ❤</a>
             </article>
 
-            <article class="card coming-soon" >
+            <!-- Carta 2: Tercer mes -->
+            <article class="card">
                 <div class="card-icon">🌺</div>
                 <div class="card-date">Enero 2025</div>
-                <h2 class="card-title">3 Meses Juntos</h2>
-                <p class="card-description">Un mes de tormenta y calma, de aprendizaje profundo. Donde descubrimos que el amor verdadero es estar juntos en todo.</p>
-                <button class="card-button">Muy Pronto...</button>
+                <h2 class="card-title">Tres Meses Juntos</h2>
+                <p class="card-description">
+                    Un mes de crecimiento, donde aprendimos que el amor verdadero
+                    no es perfecto, pero es real y nos hace más fuertes.
+                </p>
+                <a href="aniversario-3-meses.html" class="card-button">Leer Carta ❤</a>
             </article>
-
-            <article class="card" style="animation-delay: 0.4s">
+  <!-- Carta 2: Tercer mes -->
+            <article class="card">
                 <div class="card-icon">🌹</div>
                 <div class="card-date">Febrero 2025</div>
-                <h2 class="card-title">4 Meses Juntos</h2>
-                <p class="card-description">El comienzo de algo grande. Un mes de construcción, crecimiento y aprendizaje mutuo.</p>
+                <h2 class="card-title">Cuatro Meses Juntos</h2>
+                <p class="card-description">
+                    Un mes de crecimiento, donde aprendimos que el amor verdadero
+                    no es perfecto, pero es real y nos hace más fuertes.
+                </p>
                 <a href="aniversario-4-meses.html" class="card-button">Leer Carta ❤</a>
             </article>
-
-            <article class="card coming-soon" >
-                <div class="card-icon">🌼</div>
-                <div class="card-date">Marzo 2025</div>
-                <h2 class="card-title">5 Meses Juntos</h2>
-                <p class="card-description">Más historias, más sonrisas y más razones para amarte.</p>
-                <button class="card-button">Muy Pronto...</button>
-            </article>
-
-            <article class="card coming-soon" >
-                <div class="card-icon">🌻</div>
-                <div class="card-date">Abril 2025</div>
-                <h2 class="card-title">6 Meses Juntos</h2>
-                <p class="card-description">Medio año de momentos especiales y recuerdos hermosos.</p>
-                <button class="card-button">Muy Pronto...</button>
-            </article>
-
-            <article class="card coming-soon" >
-                <div class="card-icon">🌷</div>
-                <div class="card-date">Mayo 2025</div>
-                <h2 class="card-title">7 Meses Juntos</h2>
-                <p class="card-description">Cada mes trae nuevas historias, nuevas sonrisas.</p>
-                <button class="card-button">Muy Pronto...</button>
-            </article>
-
-            <article class="card coming-soon" >
-                <div class="card-icon">🏵️</div>
-                <div class="card-date">Junio 2025</div>
-                <h2 class="card-title">8 Meses Juntos</h2>
-                <p class="card-description">Continuamos escribiendo nuestra historia.</p>
-                <button class="card-button">Muy Pronto...</button>
-            </article>
-
-            <article class="card coming-soon" >
-                <div class="card-icon">💐</div>
-                <div class="card-date">Julio 2025</div>
-                <h2 class="card-title">9 Meses Juntos</h2>
-                <p class="card-description">Tres cuartas partes de un año lleno de amor.</p>
-                <button class="card-button">Muy Pronto...</button>
-            </article>
-
-            <article class="card coming-soon" >
-                <div class="card-icon">🌸</div>
-                <div class="card-date">Agosto 2025</div>
-                <h2 class="card-title">10 Meses Juntos</h2>
-                <p class="card-description">Una década de amor en apenas unos meses.</p>
-                <button class="card-button">Muy Pronto...</button>
-            </article>
-
-            <article class="card coming-soon" >
-                <div class="card-icon">🌺</div>
-                <div class="card-date">Septiembre 2025</div>
-                <h2 class="card-title">11 Meses Juntos</h2>
-                <p class="card-description">Casi un año de momentos inolvidables.</p>
-                <button class="card-button">Muy Pronto...</button>
-            </article>
-
-            <article class="card coming-soon" >
-                <div class="card-icon">💕</div>
-                <div class="card-date">Octubre 2025</div>
-                <h2 class="card-title">Un Año Juntos</h2>
-                <p class="card-description">Doce meses, doce cartas, infinitos momentos de amor.</p>
+            <!-- Carta 3: Placeholder para futuras cartas -->
+            <article class="card coming-soon">
+                <div class="card-icon">🌹</div>
+                <div class="card-date">Próximamente</div>
+                <h2 class="card-title">Más Momentos</h2>
+                <p class="card-description">
+                    Cada mes trae nuevas historias, nuevas sonrisas,
+                    y nuevas razones para amarte más.
+                </p>
                 <button class="card-button">Muy Pronto...</button>
             </article>
         </div>
