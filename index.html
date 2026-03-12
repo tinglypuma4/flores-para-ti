@@ -373,53 +373,9 @@
             <p class="header-subtitle">Cada carta es un pedazo de mi corazón para ti</p>
         </header>
 
-        <!-- Grid de cartas -->
-        <div class="cards-grid">
-            <!-- Carta 1: Aniversario 2 meses -->
-            <article class="card">
-                <div class="card-icon">🌸</div>
-                <div class="card-date">Diciembre 2024</div>
-                <h2 class="card-title">Dos Meses Juntos</h2>
-                <p class="card-description">
-                    Dos meses que se sienten como una eternidad hermosa.
-                    Una carta sobre el amor que crece cada día.
-                </p>
-                <a href="aniversario-2-meses.html" class="card-button">Leer Carta ❤</a>
-            </article>
-
-            <!-- Carta 2: Tercer mes -->
-            <article class="card">
-                <div class="card-icon">🌺</div>
-                <div class="card-date">Enero 2025</div>
-                <h2 class="card-title">Tres Meses Juntos</h2>
-                <p class="card-description">
-                    Un mes de crecimiento, donde aprendimos que el amor verdadero
-                    no es perfecto, pero es real y nos hace más fuertes.
-                </p>
-                <a href="aniversario-3-meses.html" class="card-button">Leer Carta ❤</a>
-            </article>
-  <!-- Carta 2: Tercer mes -->
-            <article class="card">
-                <div class="card-icon">🌹</div>
-                <div class="card-date">Febrero 2025</div>
-                <h2 class="card-title">Cuatro Meses Juntos</h2>
-                <p class="card-description">
-                    Un mes de crecimiento, donde aprendimos que el amor verdadero
-                    no es perfecto, pero es real y nos hace más fuertes.
-                </p>
-                <a href="aniversario-4-meses.html" class="card-button">Leer Carta ❤</a>
-            </article>
-            <!-- Carta 3: Placeholder para futuras cartas -->
-            <article class="card coming-soon">
-                <div class="card-icon">🌹</div>
-                <div class="card-date">Próximamente</div>
-                <h2 class="card-title">Más Momentos</h2>
-                <p class="card-description">
-                    Cada mes trae nuevas historias, nuevas sonrisas,
-                    y nuevas razones para amarte más.
-                </p>
-                <button class="card-button">Muy Pronto...</button>
-            </article>
+        <!-- Grid de cartas (generado dinámicamente) -->
+        <div class="cards-grid" id="cards-grid">
+            <!-- Las cartas se generan automáticamente desde /api/cartas -->
         </div>
 
         <!-- Footer -->
@@ -430,7 +386,7 @@
     </div>
 
     <script>
-        // Crear partículas flotantes en el fondo
+        // --- Partículas flotantes ---
         const particlesContainer = document.getElementById('particles');
         const particleSymbols = ['♡', '✿', '❀', '✾', '❁', '•', '○'];
 
@@ -443,33 +399,102 @@
             particle.style.setProperty('--x', (Math.random() * 200 - 100) + 'px');
             particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
             particle.style.animationDelay = Math.random() * 5 + 's';
-
             particlesContainer.appendChild(particle);
-
             setTimeout(() => particle.remove(), 30000);
         }
 
-        // Crear partículas iniciales
-        for (let i = 0; i < 20; i++) {
-            setTimeout(() => createParticle(), i * 300);
-        }
-
-        // Crear nuevas partículas periódicamente
+        for (let i = 0; i < 20; i++) setTimeout(() => createParticle(), i * 300);
         setInterval(createParticle, 2000);
 
-        // Agregar interactividad a las cartas disponibles
-        document.querySelectorAll('.card:not(.coming-soon)').forEach(card => {
-            card.addEventListener('click', function(e) {
+        // --- Generación dinámica de cartas ---
+        const ICONS = ['🌸', '🌺', '🌹', '🌷', '💐', '🌻', '🪷', '🌼', '🏵️', '💮'];
+
+        // Mes de inicio de la relación (octubre 2024 = mes 1)
+        const BASE_DATE = new Date(2024, 9, 1); // octubre 2024
+
+        const MESES_ES = [
+            'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+        ];
+
+        const NUMEROS_ES = [
+            '', 'Un', 'Dos', 'Tres', 'Cuatro', 'Cinco', 'Seis',
+            'Siete', 'Ocho', 'Nueve', 'Diez', 'Once', 'Doce'
+        ];
+
+        function getFechaLetra(mes) {
+            const fecha = new Date(BASE_DATE.getFullYear(), BASE_DATE.getMonth() + mes, 1);
+            return `${MESES_ES[fecha.getMonth()]} ${fecha.getFullYear()}`;
+        }
+
+        function getTituloMes(mes) {
+            const texto = mes < NUMEROS_ES.length ? NUMEROS_ES[mes] : mes;
+            return `${texto} Meses Juntos`;
+        }
+
+        function crearCard(mes, index, isLast) {
+            const article = document.createElement('article');
+            article.className = 'card';
+            article.style.animationDelay = `${0.2 + index * 0.2}s`;
+
+            const badgeHTML = isLast ? '<span class="new-badge">NUEVA ✨</span>' : '';
+
+            article.innerHTML = `
+                ${badgeHTML}
+                <div class="card-icon">${ICONS[index % ICONS.length]}</div>
+                <div class="card-date">${getFechaLetra(mes)}</div>
+                <h2 class="card-title">${getTituloMes(mes)}</h2>
+                <p class="card-description">
+                    Cada mes escrito con amor, cada página un recuerdo que atesoro para siempre contigo.
+                </p>
+                <a href="/mes-${mes}" class="card-button">Leer Carta ❤</a>
+            `;
+
+            article.addEventListener('click', function(e) {
                 if (!e.target.classList.contains('card-button')) {
-                    const link = this.querySelector('.card-button');
-                    if (link) {
-                        window.location.href = link.href;
-                    }
+                    window.location.href = `/mes-${mes}`;
                 }
             });
-        });
 
-        // Efecto parallax suave al mover el mouse
+            return article;
+        }
+
+        function crearCardProximamente() {
+            const article = document.createElement('article');
+            article.className = 'card coming-soon';
+            article.innerHTML = `
+                <div class="card-icon">🌿</div>
+                <div class="card-date">Próximamente</div>
+                <h2 class="card-title">Más Momentos</h2>
+                <p class="card-description">
+                    Cada mes trae nuevas historias, nuevas sonrisas,
+                    y nuevas razones para amarte más.
+                </p>
+                <button class="card-button">Muy Pronto...</button>
+            `;
+            return article;
+        }
+
+        async function cargarCartas() {
+            const grid = document.getElementById('cards-grid');
+            try {
+                const res = await fetch('/api/cartas');
+                const meses = await res.json();
+
+                meses.forEach((mes, index) => {
+                    const isLast = index === meses.length - 1;
+                    grid.appendChild(crearCard(mes, index, isLast));
+                });
+
+                grid.appendChild(crearCardProximamente());
+            } catch (err) {
+                console.error('Error cargando cartas:', err);
+            }
+        }
+
+        cargarCartas();
+
+        // --- Parallax suave ---
         document.addEventListener('mousemove', (e) => {
             const cards = document.querySelectorAll('.card');
             const x = e.clientX / window.innerWidth;
@@ -479,7 +504,6 @@
                 const intensity = (index + 1) * 2;
                 const moveX = (x - 0.5) * intensity;
                 const moveY = (y - 0.5) * intensity;
-
                 if (!card.matches(':hover')) {
                     card.style.transform = `translate(${moveX}px, ${moveY}px)`;
                 }
