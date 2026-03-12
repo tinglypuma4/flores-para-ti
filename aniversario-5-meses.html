@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinto Mes - Para Stacey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        /* Navbar de navegación */
+        .navbar {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .nav-button {
+            padding: 0.6rem 1.2rem;
+            background: white;
+            border: 2px solid #d4a5a5;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-button:hover {
+            background: #d4a5a5;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 165, 165, 0.3);
+        }
+
+        .nav-button.home {
+            border-color: #c8b6ff;
+        }
+
+        .nav-button.home:hover {
+            background: #c8b6ff;
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .nav-button:disabled:hover {
+            background: white;
+            color: #2c3e50;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Partículas sutiles de fondo */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            animation: floatParticle 15s ease-in-out infinite;
+        }
+
+        @keyframes floatParticle {
+            0%, 100% {
+                transform: translate(0, 100vh) scale(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.3; }
+            50% {
+                transform: translate(var(--x), 50vh) scale(1);
+                opacity: 0.2;
+            }
+            90% { opacity: 0.3; }
+        }
+
+        /* Carta principal */
+        .letter-container {
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            padding: 4rem 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            position: relative;
+            animation: fadeIn 2s ease-out;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ramo de flores — más exuberante, plena floración */
+        .flower-bouquet {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 2rem auto;
+            animation: floatBouquet 4s ease-in-out infinite;
+        }
+
+        @keyframes floatBouquet {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .flower-stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 100px;
+            background: linear-gradient(to bottom, #6ab04c, #4a8a2c);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 28px;
+            height: 15px;
+            background: #6ab04c;
+            border-radius: 0 100% 100% 0;
+            z-index: 1;
+        }
+
+        .leaf.left        { bottom: 65px; left: 88px;  transform: rotate(-30deg); }
+        .leaf.left.lower  { bottom: 42px; left: 84px;  transform: rotate(-40deg); }
+        .leaf.left.lowest { bottom: 20px; left: 88px;  transform: rotate(-25deg); }
+        .leaf.right       { bottom: 55px; right: 88px; transform: rotate(30deg) scaleX(-1); }
+        .leaf.right.lower { bottom: 32px; right: 84px; transform: rotate(40deg) scaleX(-1); }
+
+        .flower-bloom {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bloomGrow 3s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes bloomGrow {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50%       { transform: scale(1.08) rotate(6deg); }
+        }
+
+        .petal {
+            position: absolute;
+            width: 22px;
+            height: 32px;
+            border-radius: 50% 50% 50% 0;
+            opacity: 0.9;
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg)   translateY(-20px); }
+        .petal:nth-child(2) { transform: rotate(72deg)  translateY(-20px); }
+        .petal:nth-child(3) { transform: rotate(144deg) translateY(-20px); }
+        .petal:nth-child(4) { transform: rotate(216deg) translateY(-20px); }
+        .petal:nth-child(5) { transform: rotate(288deg) translateY(-20px); }
+
+        .flower-center {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* 9 flores — la más abundante hasta ahora */
+        .flower-bloom:nth-child(1) { top: 5px;  left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+        .flower-bloom:nth-child(1) .petal { background: linear-gradient(135deg, #ff6bb5, #ff4a9d); }
+        .flower-bloom:nth-child(1) .flower-center { background: #ffd700; }
+
+        .flower-bloom:nth-child(2) { top: 25px; left: 22%; animation-delay: 0.25s; }
+        .flower-bloom:nth-child(2) .petal { background: linear-gradient(135deg, #b19cd9, #9370db); }
+        .flower-bloom:nth-child(2) .flower-center { background: #ffe4b5; }
+
+        .flower-bloom:nth-child(3) { top: 25px; right: 22%; animation-delay: 0.5s; }
+        .flower-bloom:nth-child(3) .petal { background: linear-gradient(135deg, #87ceeb, #4da6d4); }
+        .flower-bloom:nth-child(3) .flower-center { background: #ffdab9; }
+
+        .flower-bloom:nth-child(4) { top: 55px; left: 12%; animation-delay: 0.75s; }
+        .flower-bloom:nth-child(4) .petal { background: linear-gradient(135deg, #ffb366, #ff8c42); }
+        .flower-bloom:nth-child(4) .flower-center { background: #fff8dc; }
+
+        .flower-bloom:nth-child(5) { top: 55px; right: 12%; animation-delay: 1s; }
+        .flower-bloom:nth-child(5) .petal { background: linear-gradient(135deg, #ff8ba7, #ff6b9d); }
+        .flower-bloom:nth-child(5) .flower-center { background: #fffacd; }
+
+        .flower-bloom:nth-child(6) { top: 85px; left: 27%; animation-delay: 1.25s; }
+        .flower-bloom:nth-child(6) .petal { background: linear-gradient(135deg, #c8a2ff, #b088f9); }
+        .flower-bloom:nth-child(6) .flower-center { background: #ffe4b5; }
+
+        .flower-bloom:nth-child(7) { top: 85px; right: 27%; animation-delay: 1.5s; }
+        .flower-bloom:nth-child(7) .petal { background: linear-gradient(135deg, #7ec8e3, #5eb8d8); }
+        .flower-bloom:nth-child(7) .flower-center { background: #ffdead; }
+
+        .flower-bloom:nth-child(8) { top: 70px; left: 50%; transform: translateX(-50%); animation-delay: 1.75s; }
+        .flower-bloom:nth-child(8) .petal { background: linear-gradient(135deg, #ffb3d9, #ff99c8); }
+        .flower-bloom:nth-child(8) .flower-center { background: #fff0f5; }
+
+        .flower-bloom:nth-child(9) { top: 110px; left: 50%; transform: translateX(-50%); animation-delay: 2s; }
+        .flower-bloom:nth-child(9) .petal { background: linear-gradient(135deg, #a8e6cf, #78d9a0); }
+        .flower-bloom:nth-child(9) .flower-center { background: #fffde7; }
+
+        /* Decoración superior e inferior */
+        .letter-container::before,
+        .letter-container::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 1px;
+            width: 60px;
+            background: linear-gradient(to right, transparent, #d4a5a5, transparent);
+        }
+
+        .letter-container::before { top: 2rem; }
+        .letter-container::after  { bottom: 2rem; }
+
+        /* Encabezado */
+        .letter-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        .letter-to {
+            font-size: 0.9rem;
+            color: #999;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .letter-name {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .letter-name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: #d4a5a5;
+        }
+
+        .letter-subtitle {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 1.5rem;
+        }
+
+        /* Contenido */
+        .letter-content {
+            animation: fadeIn 3s ease-out;
+        }
+
+        .letter-paragraph {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #34495e;
+            margin-bottom: 2rem;
+            text-align: justify;
+            animation: typeLetter 0.5s ease-out backwards;
+        }
+
+        .letter-paragraph:nth-child(1)  { animation-delay: 0.5s; }
+        .letter-paragraph:nth-child(2)  { animation-delay: 1s; }
+        .letter-paragraph:nth-child(3)  { animation-delay: 1.5s; }
+        .letter-paragraph:nth-child(4)  { animation-delay: 2s; }
+        .letter-paragraph:nth-child(5)  { animation-delay: 2.5s; }
+        .letter-paragraph:nth-child(6)  { animation-delay: 3s; }
+        .letter-paragraph:nth-child(7)  { animation-delay: 3.5s; }
+        .letter-paragraph:nth-child(8)  { animation-delay: 4s; }
+        .letter-paragraph:nth-child(9)  { animation-delay: 4.5s; }
+        .letter-paragraph:nth-child(10) { animation-delay: 5s; }
+
+        @keyframes typeLetter {
+            from { opacity: 0; transform: translateX(-20px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .letter-paragraph.indent { text-indent: 2rem; }
+
+        .letter-emphasis {
+            font-style: italic;
+            color: #2c3e50;
+        }
+
+        /* Quotes musicales — rosa pastel */
+        .music-quote {
+            margin: 2.5rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #ffe4f0, #ffd6e8);
+            border-left: 4px solid #ffb3d9;
+            border-radius: 8px;
+            font-style: italic;
+            color: #6b4566;
+            animation: fadeIn 3.5s ease-out;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 182, 217, 0.2);
+        }
+
+        .music-quote::before {
+            content: '♪';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            color: #ffb3d9;
+            animation: musicNote 2s ease-in-out infinite;
+        }
+
+        @keyframes musicNote {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50%       { transform: translateY(-5px) rotate(10deg); }
+        }
+
+        .music-quote-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+            color: #8b5a86;
+        }
+
+        .music-quote-source {
+            font-size: 0.85rem;
+            color: #b88fb3;
+            text-align: right;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        /* Quotes literarias — azul pizarra suave */
+        .literary-quote {
+            margin: 2.5rem 0;
+            padding: 2rem 2rem 2rem 2.5rem;
+            background: linear-gradient(135deg, #eef2ff, #e8ecff);
+            border-left: 4px solid #a5b4fc;
+            border-radius: 8px;
+            position: relative;
+            animation: fadeIn 3.5s ease-out;
+            box-shadow: 0 4px 15px rgba(165, 180, 252, 0.15);
+        }
+
+        .literary-quote::before {
+            content: '\201C';
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            font-size: 3.5rem;
+            color: #a5b4fc;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .literary-quote-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #4a5568;
+            font-style: italic;
+        }
+
+        .literary-quote-source {
+            font-size: 0.85rem;
+            color: #7c8db0;
+            text-align: right;
+            margin-top: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Highlight especial */
+        .highlight {
+            background: linear-gradient(120deg, #ffe4f0 0%, #fff9f0 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Firma */
+        .letter-signature {
+            margin-top: 4rem;
+            text-align: right;
+            animation: fadeIn 4s ease-out;
+        }
+
+        .signature-line {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-name {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .signature-heart {
+            font-size: 1.2rem;
+            color: #c56c6c;
+            margin-top: 0.5rem;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25%       { transform: scale(1.1); }
+            50%       { transform: scale(1); }
+        }
+
+        .letter-date {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #95a5a6;
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+
+        .letter-ps {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ecf0f1;
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+
+            .navbar {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .letter-container { padding: 3rem 2rem; }
+            .letter-name      { font-size: 2rem; }
+
+            .letter-paragraph {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            .music-quote-text,
+            .literary-quote-text { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="aniversario-4-meses.html" class="nav-button">← Anterior</a>
+        <a href="index.html" class="nav-button home">🏠 Menú Principal</a>
+        <button class="nav-button" disabled>Siguiente →</button>
+    </nav>
+
+    <!-- Partículas de fondo -->
+    <div id="particles"></div>
+
+    <!-- Carta -->
+    <div class="letter-container">
+        <div class="letter-date">Marzo 2026</div>
+
+        <div class="letter-header">
+            <div class="letter-to">Para</div>
+
+            <!-- Ramo de flores — plena abundancia, 9 flores -->
+            <div class="flower-bouquet">
+                <div class="flower-stem"></div>
+                <div class="leaf left"></div>
+                <div class="leaf left lower"></div>
+                <div class="leaf left lowest"></div>
+                <div class="leaf right"></div>
+                <div class="leaf right lower"></div>
+
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+            </div>
+
+            <h1 class="letter-name">Stacey</h1>
+            <p class="letter-subtitle">Cinco meses que probaron que juntos somos más fuertes que cualquier tormenta</p>
+        </div>
+
+        <div class="letter-content">
+            <p class="letter-paragraph indent">
+                Hay meses que pasan y dejan solo recuerdos tibios. Y hay meses que marcan. Que graban su nombre en la
+                historia de dos personas y dicen: <span class="letter-emphasis">aquí fue donde todo cambió</span>. Este
+                quinto mes, del 12 de febrero al 12 de marzo, fue exactamente eso. No fue fácil. No fue tranquilo. Pero
+                fue nuestro, completamente nuestro, y lo vivimos con una valentía que no sabía que teníamos.
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "El amor no es mirarse el uno al otro; es mirar juntos en la misma dirección."
+                </p>
+                <div class="literary-quote-source">— Antoine de Saint-Exupéry</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Nos fuimos del trabajo donde estábamos. Una decisión que muchos habrían aplazado por miedo, por comodidad,
+                por el qué dirán. Nosotros no. Porque teníamos algo más valioso que la seguridad de un sueldo ajeno:
+                <span class="letter-emphasis">nos teníamos el uno al otro</span>. Y con eso, con esa certeza, saltamos.
+                Y no caímos. Volamos.
+            </p>
+
+            <p class="letter-paragraph">
+                Cerramos nuestro primer gran trato de SAYUX. Nuestro primer CRM grande, el primero que nos dijo que
+                esto que construimos juntos <span class="highlight">es real, es serio, es nuestro futuro</span>. Yo veía
+                tu cara cuando llegó la noticia y entendí lo que significa tener a alguien que celebra contigo desde las
+                entrañas, no desde la cortesía. Tú celebraste como si fuera tuyo también. Y es que lo es. Siempre lo fue.
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "I'd catch a grenade for ya, throw my hand on a blade for ya...
+                    Yes, I would die for ya, baby."
+                </div>
+                <div class="music-quote-source">— Bruno Mars, "Grenade"</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Iniciamos un negocio de comida. Otra semilla plantada con nuestras manos juntas. No fue glamoroso
+                al principio, ningún comienzo lo es. Pero fue honesto, fue con ganas, y fue con el mismo espíritu
+                con el que hemos construido todo: <span class="letter-emphasis">desde cero, sin miedo y sin soltarnos
+                la mano</span>. Cada proyecto que nace entre nosotros lleva nuestra firma, nuestra historia, nuestra fe.
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "Nadie puede construir en tu lugar los puentes que precisas para cruzar el río de la vida.
+                    Nadie, excepto tú. Claro que hay innumerables senderos y puentes y semidioses que querrán
+                    ayudarte; pero solo a costa de empeñar tu propia personalidad."
+                </p>
+                <div class="literary-quote-source">— Friedrich Nietzsche</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Viajamos juntos a mi ciudad natal. Ese viaje no fue solo trasladarse de un lugar a otro. Fue
+                abrirte la puerta de donde vengo, de lo que me formó, de la tierra que cargo en los pies aunque
+                no siempre lo note. Y tú estuviste ahí, <span class="letter-emphasis">con los ojos abiertos y el
+                corazón dispuesto</span>, recibiendo todo lo que soy, de dónde soy, con una ternura que todavía
+                me quita el aliento cuando lo pienso.
+            </p>
+
+            <p class="letter-paragraph">
+                Estuviste en mi ceremonia de titulación. Dios, Stacey. ¿Sabes lo que significa que la persona
+                que amas esté ahí, en uno de los momentos más importantes de tu vida? No como espectadora.
+                Como <span class="highlight">parte de ese logro</span>. Porque lo eres. Cada vez que dudé,
+                ahí estabas. Cada vez que quise rendirme, me recordaste quién soy. Ese título también lleva
+                tu nombre, aunque no esté escrito en el papel.
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "Puedo vivir sin ti, pero no quiero intentarlo.
+                    Qué sería de mí si no estás aquí."
+                </div>
+                <div class="music-quote-source">— Gustavo Cerati, "Cosas Imposibles"</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Y luego estuvo lo de la jefa. Lo que te estaba haciendo cargar sola, el estrés, la injusticia.
+                Fuimos y ganamos. <span class="letter-emphasis">Juntos</span>. Ese día aprendí que a tu lado no
+                me importa el tamaño del problema, porque contigo a la par siempre encontraré la manera de
+                resolverlo. Nadie te va a faltar el respeto mientras yo esté aquí. Eso no es una promesa vacía.
+                Es un juramento que vivo con cada decisión que tomo.
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "El amor verdadero no es otra cosa que el deseo inevitable de ayudar al otro
+                    para que sea quien es."
+                </p>
+                <div class="literary-quote-source">— Jorge Bucay</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Me hiciste tantos detalles este mes. Pequeños, grandes, espontáneos, pensados. Y en cada uno
+                de ellos vi algo que pocas personas logran transmitir: <span class="letter-emphasis">que te
+                importa hacerme feliz tanto como a mí me importa hacerte feliz a ti</span>. Eso es raro, Stacey.
+                Eso es lo que busca la gente toda su vida y no siempre encuentra. Nosotros lo tenemos, y lo
+                cuido como el tesoro más grande que me han dado.
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "Y en tu universo paralelo al mío no hay nadie como tú.
+                    Todo lo que toco se convierte en ti."
+                </div>
+                <div class="music-quote-source">— Gustavo Cerati, "Universo Paralelo"</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Este mes nos demostró todo lo que somos cuando lo poquito se convierte en suficiente porque
+                estamos juntos. <span class="letter-emphasis">Fortaleza. Lealtad. Unión. Compañía. Confianza.</span>
+                No son palabras que se dicen bonito. Son cosas que se probaron en este mes, en la calle, en las
+                decisiones difíciles, en los momentos donde nadie nos aplaudía pero nosotros sabíamos que
+                íbamos en la dirección correcta.
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "Ámame cuando menos lo merezca, porque será cuando más lo necesite."
+                </p>
+                <div class="literary-quote-source">— Proverbio chino</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Te juro lealtad, Stacey. No la lealtad de las palabras fáciles. La lealtad de quien está
+                cuando el mundo se complica, de quien no corre cuando la vida aprieta, de quien te mira
+                a los ojos en el caos y te dice: <span class="highlight">aquí estoy, y aquí me quedo</span>.
+                Este mes lo demostré, y lo demostraré cada mes que venga. Porque tú vales cada batalla,
+                cada madrugada difícil, cada momento incierto.
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "Count on me through thick and thin, a friendship that will never end.
+                    When you are weak, I will be strong, helping you to carry on."
+                </div>
+                <div class="music-quote-source">— Bruno Mars, "Count On Me"</div>
+            </div>
+
+            <p class="letter-paragraph" style="margin-top: 3rem; text-align: center; font-size: 1.2rem;">
+                Cinco meses. Cinco capítulos de la historia más bonita que he vivido.<br><br>
+                Y lo mejor, mi amor, es que esto apenas está comenzando.<br>
+                Juntos vamos a llegar tan lejos que incluso nosotros nos vamos a sorprender.<br><br>
+                Te amo. Con todo. Sin reservas. Sin límites.
+            </p>
+        </div>
+
+        <div class="letter-signature">
+            <div class="signature-line">Con lealtad, con fuerza, con todo mi amor,</div>
+            <div class="signature-name">Esaú</div>
+            <div class="signature-heart">♡</div>
+        </div>
+
+        <div class="letter-ps">
+            P.D. — Dicen que el amor se prueba en la adversidad. Este mes lo probamos, y salió de oro puro.
+            Feliz quinto mes, mi compañera de vida. Lo que viene va a ser extraordinario. 💚
+        </div>
+    </div>
+
+    <script>
+        // Crear partículas sutiles en el fondo
+        const particlesContainer = document.getElementById('particles');
+        const symbols = ['·', '•', '○', '◦', '♪', '♫'];
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.fontSize = (Math.random() * 10 + 5) + 'px';
+            particle.style.color = `rgba(${180 + Math.random() * 50}, ${150 + Math.random() * 50}, ${150 + Math.random() * 50}, 0.3)`;
+            particle.style.setProperty('--x', (Math.random() * 100 - 50) + 'px');
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(particle);
+            setTimeout(() => particle.remove(), 20000);
+        }
+
+        for (let i = 0; i < 15; i++) setTimeout(() => createParticle(), i * 500);
+        setInterval(createParticle, 2000);
+
+        const paragraphs = document.querySelectorAll('.letter-paragraph');
+        paragraphs.forEach((p, index) => {
+            setTimeout(() => { p.style.animation = 'typeLetter 1s ease-out'; }, index * 300);
+        });
+    </script>
+</body>
+</html>
