@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sexto Mes - Para Stacey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        /* Navbar de navegación */
+        .navbar {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .nav-button {
+            padding: 0.6rem 1.2rem;
+            background: white;
+            border: 2px solid #d4a5a5;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-button:hover {
+            background: #d4a5a5;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 165, 165, 0.3);
+        }
+
+        .nav-button.home {
+            border-color: #c8b6ff;
+        }
+
+        .nav-button.home:hover {
+            background: #c8b6ff;
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .nav-button:disabled:hover {
+            background: white;
+            color: #2c3e50;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Partículas sutiles de fondo */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            animation: floatParticle 15s ease-in-out infinite;
+        }
+
+        @keyframes floatParticle {
+            0%, 100% {
+                transform: translate(0, 100vh) scale(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.3; }
+            50% {
+                transform: translate(var(--x), 50vh) scale(1);
+                opacity: 0.2;
+            }
+            90% { opacity: 0.3; }
+        }
+
+        /* Carta principal */
+        .letter-container {
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            padding: 4rem 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            position: relative;
+            animation: fadeIn 2s ease-out;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ramo de flores — 11 flores, la más abundante */
+        .flower-bouquet {
+            position: relative;
+            width: 240px;
+            height: 240px;
+            margin: 0 auto 2rem auto;
+            animation: floatBouquet 4s ease-in-out infinite;
+        }
+
+        @keyframes floatBouquet {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .flower-stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 110px;
+            background: linear-gradient(to bottom, #6ab04c, #4a8a2c);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 28px;
+            height: 15px;
+            background: #6ab04c;
+            border-radius: 0 100% 100% 0;
+            z-index: 1;
+        }
+
+        .leaf.left        { bottom: 75px; left: 88px;  transform: rotate(-30deg); }
+        .leaf.left.lower  { bottom: 52px; left: 84px;  transform: rotate(-40deg); }
+        .leaf.left.lowest { bottom: 28px; left: 88px;  transform: rotate(-25deg); }
+        .leaf.right       { bottom: 65px; right: 88px; transform: rotate(30deg) scaleX(-1); }
+        .leaf.right.lower { bottom: 42px; right: 84px; transform: rotate(40deg) scaleX(-1); }
+        .leaf.right.lowest{ bottom: 18px; right: 88px; transform: rotate(25deg) scaleX(-1); }
+
+        .flower-bloom {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bloomGrow 3s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes bloomGrow {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50%       { transform: scale(1.08) rotate(6deg); }
+        }
+
+        .petal {
+            position: absolute;
+            width: 22px;
+            height: 32px;
+            border-radius: 50% 50% 50% 0;
+            opacity: 0.9;
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg)   translateY(-20px); }
+        .petal:nth-child(2) { transform: rotate(72deg)  translateY(-20px); }
+        .petal:nth-child(3) { transform: rotate(144deg) translateY(-20px); }
+        .petal:nth-child(4) { transform: rotate(216deg) translateY(-20px); }
+        .petal:nth-child(5) { transform: rotate(288deg) translateY(-20px); }
+
+        .flower-center {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* 11 flores */
+        .flower-bloom:nth-child(1) { top: 0px;  left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+        .flower-bloom:nth-child(1) .petal { background: linear-gradient(135deg, #ff6bb5, #ff4a9d); }
+        .flower-bloom:nth-child(1) .flower-center { background: #ffd700; }
+
+        .flower-bloom:nth-child(2) { top: 20px; left: 18%; animation-delay: 0.2s; }
+        .flower-bloom:nth-child(2) .petal { background: linear-gradient(135deg, #b19cd9, #9370db); }
+        .flower-bloom:nth-child(2) .flower-center { background: #ffe4b5; }
+
+        .flower-bloom:nth-child(3) { top: 20px; right: 18%; animation-delay: 0.4s; }
+        .flower-bloom:nth-child(3) .petal { background: linear-gradient(135deg, #87ceeb, #4da6d4); }
+        .flower-bloom:nth-child(3) .flower-center { background: #ffdab9; }
+
+        .flower-bloom:nth-child(4) { top: 50px; left: 8%; animation-delay: 0.6s; }
+        .flower-bloom:nth-child(4) .petal { background: linear-gradient(135deg, #ffb366, #ff8c42); }
+        .flower-bloom:nth-child(4) .flower-center { background: #fff8dc; }
+
+        .flower-bloom:nth-child(5) { top: 50px; right: 8%; animation-delay: 0.8s; }
+        .flower-bloom:nth-child(5) .petal { background: linear-gradient(135deg, #ff8ba7, #ff6b9d); }
+        .flower-bloom:nth-child(5) .flower-center { background: #fffacd; }
+
+        .flower-bloom:nth-child(6) { top: 80px; left: 23%; animation-delay: 1.0s; }
+        .flower-bloom:nth-child(6) .petal { background: linear-gradient(135deg, #c8a2ff, #b088f9); }
+        .flower-bloom:nth-child(6) .flower-center { background: #ffe4b5; }
+
+        .flower-bloom:nth-child(7) { top: 80px; right: 23%; animation-delay: 1.2s; }
+        .flower-bloom:nth-child(7) .petal { background: linear-gradient(135deg, #7ec8e3, #5eb8d8); }
+        .flower-bloom:nth-child(7) .flower-center { background: #ffdead; }
+
+        .flower-bloom:nth-child(8) { top: 65px; left: 50%; transform: translateX(-50%); animation-delay: 1.4s; }
+        .flower-bloom:nth-child(8) .petal { background: linear-gradient(135deg, #ffb3d9, #ff99c8); }
+        .flower-bloom:nth-child(8) .flower-center { background: #fff0f5; }
+
+        .flower-bloom:nth-child(9) { top: 105px; left: 50%; transform: translateX(-50%); animation-delay: 1.6s; }
+        .flower-bloom:nth-child(9) .petal { background: linear-gradient(135deg, #a8e6cf, #78d9a0); }
+        .flower-bloom:nth-child(9) .flower-center { background: #fffde7; }
+
+        .flower-bloom:nth-child(10) { top: 38px; left: 50%; transform: translateX(-50%); animation-delay: 1.8s; }
+        .flower-bloom:nth-child(10) .petal { background: linear-gradient(135deg, #ffd6a5, #ffb347); }
+        .flower-bloom:nth-child(10) .flower-center { background: #fff3e0; }
+
+        .flower-bloom:nth-child(11) { top: 90px; left: 9%; animation-delay: 2.0s; }
+        .flower-bloom:nth-child(11) .petal { background: linear-gradient(135deg, #f9a8d4, #ec4899); }
+        .flower-bloom:nth-child(11) .flower-center { background: #fce7f3; }
+
+        /* Decoración superior e inferior */
+        .letter-container::before,
+        .letter-container::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 1px;
+            width: 60px;
+            background: linear-gradient(to right, transparent, #d4a5a5, transparent);
+        }
+
+        .letter-container::before { top: 2rem; }
+        .letter-container::after  { bottom: 2rem; }
+
+        /* Encabezado */
+        .letter-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        .letter-to {
+            font-size: 0.9rem;
+            color: #999;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .letter-name {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .letter-name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: #d4a5a5;
+        }
+
+        .letter-subtitle {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 1.5rem;
+        }
+
+        /* Contenido */
+        .letter-content {
+            animation: fadeIn 3s ease-out;
+        }
+
+        .letter-paragraph {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #34495e;
+            margin-bottom: 2rem;
+            text-align: justify;
+            animation: typeLetter 0.5s ease-out backwards;
+        }
+
+        .letter-paragraph:nth-child(1)  { animation-delay: 0.5s; }
+        .letter-paragraph:nth-child(2)  { animation-delay: 1s; }
+        .letter-paragraph:nth-child(3)  { animation-delay: 1.5s; }
+        .letter-paragraph:nth-child(4)  { animation-delay: 2s; }
+        .letter-paragraph:nth-child(5)  { animation-delay: 2.5s; }
+        .letter-paragraph:nth-child(6)  { animation-delay: 3s; }
+        .letter-paragraph:nth-child(7)  { animation-delay: 3.5s; }
+        .letter-paragraph:nth-child(8)  { animation-delay: 4s; }
+        .letter-paragraph:nth-child(9)  { animation-delay: 4.5s; }
+        .letter-paragraph:nth-child(10) { animation-delay: 5s; }
+
+        @keyframes typeLetter {
+            from { opacity: 0; transform: translateX(-20px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .letter-paragraph.indent { text-indent: 2rem; }
+
+        .letter-emphasis {
+            font-style: italic;
+            color: #2c3e50;
+        }
+
+        /* Quotes musicales — rosa pastel */
+        .music-quote {
+            margin: 2.5rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #ffe4f0, #ffd6e8);
+            border-left: 4px solid #ffb3d9;
+            border-radius: 8px;
+            font-style: italic;
+            color: #6b4566;
+            animation: fadeIn 3.5s ease-out;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 182, 217, 0.2);
+        }
+
+        .music-quote::before {
+            content: '♪';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            color: #ffb3d9;
+            animation: musicNote 2s ease-in-out infinite;
+        }
+
+        @keyframes musicNote {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50%       { transform: translateY(-5px) rotate(10deg); }
+        }
+
+        .music-quote-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+            color: #8b5a86;
+        }
+
+        .music-quote-source {
+            font-size: 0.85rem;
+            color: #b88fb3;
+            text-align: right;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        /* Quotes literarias — azul pizarra suave */
+        .literary-quote {
+            margin: 2.5rem 0;
+            padding: 2rem 2rem 2rem 2.5rem;
+            background: linear-gradient(135deg, #eef2ff, #e8ecff);
+            border-left: 4px solid #a5b4fc;
+            border-radius: 8px;
+            position: relative;
+            animation: fadeIn 3.5s ease-out;
+            box-shadow: 0 4px 15px rgba(165, 180, 252, 0.15);
+        }
+
+        .literary-quote::before {
+            content: '\201C';
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            font-size: 3.5rem;
+            color: #a5b4fc;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .literary-quote-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #4a5568;
+            font-style: italic;
+        }
+
+        .literary-quote-source {
+            font-size: 0.85rem;
+            color: #7c8db0;
+            text-align: right;
+            margin-top: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Highlight especial */
+        .highlight {
+            background: linear-gradient(120deg, #ffe4f0 0%, #fff9f0 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Firma */
+        .letter-signature {
+            margin-top: 4rem;
+            text-align: right;
+            animation: fadeIn 4s ease-out;
+        }
+
+        .signature-line {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-name {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .signature-heart {
+            font-size: 1.2rem;
+            color: #c56c6c;
+            margin-top: 0.5rem;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25%       { transform: scale(1.1); }
+            50%       { transform: scale(1); }
+        }
+
+        .letter-date {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #95a5a6;
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+
+        .letter-ps {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ecf0f1;
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+
+            .navbar {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .letter-container { padding: 3rem 2rem; }
+            .letter-name      { font-size: 2rem; }
+
+            .letter-paragraph {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            .music-quote-text,
+            .literary-quote-text { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="aniversario-5-meses.html" class="nav-button">← Anterior</a>
+        <a href="index.html" class="nav-button home">🏠 Menú Principal</a>
+        <button class="nav-button" disabled>Siguiente →</button>
+    </nav>
+
+    <!-- Partículas de fondo -->
+    <div id="particles"></div>
+
+    <!-- Carta -->
+    <div class="letter-container">
+        <div class="letter-date">Abril 2026</div>
+
+        <div class="letter-header">
+            <div class="letter-to">Para</div>
+
+            <!-- Ramo de flores — 11 flores, plena abundancia -->
+            <div class="flower-bouquet">
+                <div class="flower-stem"></div>
+                <div class="leaf left"></div>
+                <div class="leaf left lower"></div>
+                <div class="leaf left lowest"></div>
+                <div class="leaf right"></div>
+                <div class="leaf right lower"></div>
+                <div class="leaf right lowest"></div>
+
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+                <div class="flower-bloom">
+                    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+                    <div class="petal"></div><div class="petal"></div>
+                    <div class="flower-center"></div>
+                </div>
+            </div>
+
+            <h1 class="letter-name">Stacey</h1>
+            <p class="letter-subtitle">Seis meses que nos enseñaron que juntos, el mundo cabe en dos manos</p>
+        </div>
+
+        <div class="letter-content">
+            <p class="letter-paragraph indent">
+                Hay meses que se viven en pausa, con la vida en suspenso, esperando que pase algo. Y hay meses que
+                se viven a mil, que te exigen todo y a cambio te dan más de lo que pediste. Este sexto mes,
+                del 12 de marzo al 12 de abril, fue de esos que no caben en un solo recuerdo: fue una avalancha de
+                momentos, de lugares, de personas, de vida compartida. Y tú estuviste en cada uno.
+                <span class="letter-emphasis">En cada uno sin excepción.</span>
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "La felicidad solo es real cuando se comparte."
+                </p>
+                <div class="literary-quote-source">— Jon Krakauer, "Into the Wild"</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Empezamos el mes sentados a una mesa con mi familia, en un restaurante italiano, con el olor a pasta
+                y el ruido de risas que se mezclan con el tintineo de los vasos. Esos momentos parecen sencillos
+                desde afuera, pero yo sé lo que significan: <span class="letter-emphasis">que ya eres parte de mi
+                mundo más cercano</span>, del círculo donde la gente entra solo si de verdad importa. Tú entraste
+                hace tiempo. Y cada vez que te siento ahí, con los míos, algo en mí se asienta con una paz que
+                no sé describir de otra manera.
+            </p>
+
+            <p class="letter-paragraph">
+                Me ayudaste a mudarme. Y quiero que sepas que eso no fue un favor. Fue un acto de amor enorme.
+                Cargar cajas, decidir qué va dónde, aguantar el caos de un hogar que se transforma, estar presente
+                en ese proceso tan íntimo que es cambiar de lugar en el mundo…
+                <span class="highlight">eso lo hace alguien que realmente está contigo</span>. No de visita. Contigo.
+                Gracias por haber estado ahí ese día. Ese nuevo espacio también tiene un poco de ti.
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "I wanna be your end game, I wanna be your first string,
+                    I wanna be your A-Team."
+                </div>
+                <div class="music-quote-source">— Taylor Swift, "End Game"</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Luego vinieron las pirámides de Tlaxcala. Me acuerdo de ese juego de colores: tú amarillo, yo rojo,
+                los dos azul. Algo tan simple que se volvió nuestro, que se volvió un lenguaje propio entre las
+                piedras viejas y el cielo abierto. Así eres tú: capaz de convertir cualquier lugar en un recuerdo
+                que sabe a nosotros. <span class="letter-emphasis">En ese momento, parados frente a lo que construyeron
+                otros hace siglos, yo solo podía pensar en lo que estamos construyendo nosotros.</span>
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "No camines delante de mí, puede que no te siga. No camines detrás de mí,
+                    puede que no te guíe. Camina junto a mí y sé simplemente mi amigo."
+                </p>
+                <div class="literary-quote-source">— Albert Camus</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Cuetzalan. Esa palabra ya tiene otro peso para mí desde que la vivimos juntos. Las grutas con su
+                frío y su oscuridad que hacen que te aferres a quien tienes al lado. La cabaña con ese silencio
+                de sierra que se te mete en el pecho. Las calles empedradas, el desayuno, los pies cansados
+                de tanto caminar. <span class="letter-emphasis">Me cansé feliz ese día</span>. Me cansé contigo,
+                que es la mejor manera de cansarse. Ese viaje fue nuestro, completamente nuestro, y lo cargo
+                como uno de los mejores recuerdos que tengo en la vida.
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "Take me into your loving arms, kiss me under the light of a thousand stars.
+                    Place your head on my beating heart."
+                </div>
+                <div class="music-quote-source">— Ed Sheeran, "Thinking Out Loud"</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Y entonces Pachuca. Tu familia. Todos. Ese día me di cuenta de algo que ya sabía pero que ese
+                momento me lo confirmó con fuerza: <span class="highlight">me estás abriendo tu mundo</span>.
+                No solo tu tiempo, no solo tu cariño, sino el lugar donde creciste, la gente que te formó,
+                las raíces que te sostienen. Estuvimos en la cocina ayudando, en la mesa riendo, en ese ambiente
+                cálido que tienen las reuniones donde la gente se quiere de verdad. Me trataron como si ya
+                fuera parte. Y espero serlo, corazón. Espero serlo por mucho tiempo.
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "Amar no es solamente querer, es sobre todo comprender."
+                </p>
+                <div class="literary-quote-source">— Françoise Sagan</div>
+            </div>
+
+            <p class="letter-paragraph">
+                En medio de todo eso, el trabajo siguió. Otro prospecto para SAYUX, avances en el CRM,
+                y tú cerrando dos ventas de tus cursos de redes sociales con una determinación que me hace
+                muy orgulloso. Aprendimos a movernos juntos en eso también: a trabajar, a ahorrar, a administrar,
+                a divertirnos aunque haya pendientes. <span class="letter-emphasis">Eso no lo hace cualquiera.
+                Eso lo hace una pareja que de verdad se entiende.</span>
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "Tú eres lo que yo siempre quise tener,
+                    lo que nunca pensé merecer."
+                </div>
+                <div class="music-quote-source">— Alejandro Fernández, "Me Dediqué a Perderte"</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Y en medio de todo, hubo momentos pequeños que me gustan tanto o más que los grandes: maquillarnos
+                juntos, reír por cualquier tontería, estar sin hacer nada y que eso se sienta como suficiente.
+                Contigo el tiempo cotidiano también es especial. No necesitamos que pase algo extraordinario
+                para que el día valga. <span class="highlight">Tú ya lo haces valer con solo estar.</span>
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "Las personas felices no tienen la mejor de todo, simplemente hacen lo mejor de todo lo que tienen."
+                </p>
+                <div class="literary-quote-source">— Anónimo</div>
+            </div>
+
+            <p class="letter-paragraph" style="margin-top: 3rem; text-align: center; font-size: 1.2rem;">
+                Seis meses. Seis capítulos llenos hasta el borde.<br><br>
+                Grutas, pirámides, cabañas, cocinas, mudanzas, mesas familiares,
+                colores inventados, pies cansados y corazones muy llenos.<br><br>
+                Eso fuimos este mes. Eso somos.<br><br>
+                Te amo, mi compañera. Con cada versión que has conocido de mí<br>
+                y con todas las que todavía están por venir.
+            </p>
+        </div>
+
+        <div class="letter-signature">
+            <div class="signature-line">Con todo lo que tengo y todo lo que soy,</div>
+            <div class="signature-name">Esaú</div>
+            <div class="signature-heart">♡</div>
+        </div>
+
+        <div class="letter-ps">
+            P.D. — Seis meses después, sigo eligiéndote. En los viajes largos, en las mudanzas, en los días
+            de trabajo y en los domingos sin planes. Siempre tú. Feliz sexto mes, mi amor. 💚
+        </div>
+    </div>
+
+    <script>
+        // Crear partículas sutiles en el fondo
+        const particlesContainer = document.getElementById('particles');
+        const symbols = ['·', '•', '○', '◦', '♪', '♫'];
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.fontSize = (Math.random() * 10 + 5) + 'px';
+            particle.style.color = `rgba(${180 + Math.random() * 50}, ${150 + Math.random() * 50}, ${150 + Math.random() * 50}, 0.3)`;
+            particle.style.setProperty('--x', (Math.random() * 100 - 50) + 'px');
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(particle);
+            setTimeout(() => particle.remove(), 20000);
+        }
+
+        for (let i = 0; i < 15; i++) setTimeout(() => createParticle(), i * 500);
+        setInterval(createParticle, 2000);
+
+        const paragraphs = document.querySelectorAll('.letter-paragraph');
+        paragraphs.forEach((p, index) => {
+            setTimeout(() => { p.style.animation = 'typeLetter 1s ease-out'; }, index * 300);
+        });
+    </script>
+</body>
+</html>
