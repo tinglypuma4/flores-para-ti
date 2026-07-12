@@ -115,11 +115,11 @@
             }
         }
 
-        /* Ramo — 15 flores */
+        /* Ramo — 13 flores */
         .flower-bouquet {
             position: relative;
-            width: 260px;
-            height: 260px;
+            width: 250px;
+            height: 250px;
             margin: 0 auto 2rem auto;
             animation: floatBouquet 4s ease-in-out infinite;
         }
@@ -135,7 +135,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 5px;
-            height: 120px;
+            height: 115px;
             background: linear-gradient(to bottom, #6ab04c, #4a8a2c);
             border-radius: 2px;
             z-index: 1;
@@ -150,17 +150,17 @@
             z-index: 1;
         }
 
-        .leaf.left         { bottom: 85px; left: 88px;  transform: rotate(-30deg); }
-        .leaf.left.lower   { bottom: 62px; left: 84px;  transform: rotate(-40deg); }
-        .leaf.left.lowest  { bottom: 38px; left: 88px;  transform: rotate(-25deg); }
-        .leaf.right        { bottom: 75px; right: 88px; transform: rotate(30deg) scaleX(-1); }
-        .leaf.right.lower  { bottom: 52px; right: 84px; transform: rotate(40deg) scaleX(-1); }
-        .leaf.right.lowest { bottom: 27px; right: 88px; transform: rotate(25deg) scaleX(-1); }
+        .leaf.left         { bottom: 80px; left: 88px;  transform: rotate(-30deg); }
+        .leaf.left.lower   { bottom: 57px; left: 84px;  transform: rotate(-40deg); }
+        .leaf.left.lowest  { bottom: 33px; left: 88px;  transform: rotate(-25deg); }
+        .leaf.right        { bottom: 70px; right: 88px; transform: rotate(30deg) scaleX(-1); }
+        .leaf.right.lower  { bottom: 47px; right: 84px; transform: rotate(40deg) scaleX(-1); }
+        .leaf.right.lowest { bottom: 22px; right: 88px; transform: rotate(25deg) scaleX(-1); }
 
         .flower-bloom {
             position: absolute;
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -176,21 +176,21 @@
 
         .petal {
             position: absolute;
-            width: 19px;
-            height: 28px;
+            width: 20px;
+            height: 30px;
             border-radius: 50% 50% 50% 0;
             opacity: 0.9;
         }
 
-        .petal:nth-child(1) { transform: rotate(0deg)   translateY(-18px); }
-        .petal:nth-child(2) { transform: rotate(72deg)  translateY(-18px); }
-        .petal:nth-child(3) { transform: rotate(144deg) translateY(-18px); }
-        .petal:nth-child(4) { transform: rotate(216deg) translateY(-18px); }
-        .petal:nth-child(5) { transform: rotate(288deg) translateY(-18px); }
+        .petal:nth-child(1) { transform: rotate(0deg)   translateY(-19px); }
+        .petal:nth-child(2) { transform: rotate(72deg)  translateY(-19px); }
+        .petal:nth-child(3) { transform: rotate(144deg) translateY(-19px); }
+        .petal:nth-child(4) { transform: rotate(216deg) translateY(-19px); }
+        .petal:nth-child(5) { transform: rotate(288deg) translateY(-19px); }
 
         .flower-center {
-            width: 12px;
-            height: 12px;
+            width: 13px;
+            height: 13px;
             border-radius: 50%;
             position: relative;
             z-index: 3;
@@ -200,61 +200,53 @@
         .flower-bloom:nth-child(1) .petal { background: linear-gradient(135deg, #ff6bb5, #ff4a9d); }
         .flower-bloom:nth-child(1) .flower-center { background: #ffd700; }
 
-        .flower-bloom:nth-child(2)  { top: 16px;  left: 13%; animation-delay: 0.15s; }
+        .flower-bloom:nth-child(2)  { top: 18px;  left: 15%; animation-delay: 0.18s; }
         .flower-bloom:nth-child(2) .petal { background: linear-gradient(135deg, #b19cd9, #9370db); }
         .flower-bloom:nth-child(2) .flower-center { background: #ffe4b5; }
 
-        .flower-bloom:nth-child(3)  { top: 16px;  right: 13%; animation-delay: 0.3s; }
+        .flower-bloom:nth-child(3)  { top: 18px;  right: 15%; animation-delay: 0.36s; }
         .flower-bloom:nth-child(3) .petal { background: linear-gradient(135deg, #87ceeb, #4da6d4); }
         .flower-bloom:nth-child(3) .flower-center { background: #ffdab9; }
 
-        .flower-bloom:nth-child(4)  { top: 45px;  left: 3%; animation-delay: 0.45s; }
+        .flower-bloom:nth-child(4)  { top: 48px;  left: 5%; animation-delay: 0.54s; }
         .flower-bloom:nth-child(4) .petal { background: linear-gradient(135deg, #ffb366, #ff8c42); }
         .flower-bloom:nth-child(4) .flower-center { background: #fff8dc; }
 
-        .flower-bloom:nth-child(5)  { top: 45px;  right: 3%; animation-delay: 0.6s; }
+        .flower-bloom:nth-child(5)  { top: 48px;  right: 5%; animation-delay: 0.72s; }
         .flower-bloom:nth-child(5) .petal { background: linear-gradient(135deg, #ff8ba7, #ff6b9d); }
         .flower-bloom:nth-child(5) .flower-center { background: #fffacd; }
 
-        .flower-bloom:nth-child(6)  { top: 75px;  left: 17%; animation-delay: 0.75s; }
+        .flower-bloom:nth-child(6)  { top: 78px;  left: 20%; animation-delay: 0.9s; }
         .flower-bloom:nth-child(6) .petal { background: linear-gradient(135deg, #c8a2ff, #b088f9); }
         .flower-bloom:nth-child(6) .flower-center { background: #ffe4b5; }
 
-        .flower-bloom:nth-child(7)  { top: 75px;  right: 17%; animation-delay: 0.9s; }
+        .flower-bloom:nth-child(7)  { top: 78px;  right: 20%; animation-delay: 1.08s; }
         .flower-bloom:nth-child(7) .petal { background: linear-gradient(135deg, #7ec8e3, #5eb8d8); }
         .flower-bloom:nth-child(7) .flower-center { background: #ffdead; }
 
-        .flower-bloom:nth-child(8)  { top: 58px;  left: 50%; transform: translateX(-50%); animation-delay: 1.05s; }
+        .flower-bloom:nth-child(8)  { top: 62px;  left: 50%; transform: translateX(-50%); animation-delay: 1.26s; }
         .flower-bloom:nth-child(8) .petal { background: linear-gradient(135deg, #ffb3d9, #ff99c8); }
         .flower-bloom:nth-child(8) .flower-center { background: #fff0f5; }
 
-        .flower-bloom:nth-child(9)  { top: 96px;  left: 50%; transform: translateX(-50%); animation-delay: 1.2s; }
+        .flower-bloom:nth-child(9)  { top: 100px; left: 50%; transform: translateX(-50%); animation-delay: 1.44s; }
         .flower-bloom:nth-child(9) .petal { background: linear-gradient(135deg, #a8e6cf, #78d9a0); }
         .flower-bloom:nth-child(9) .flower-center { background: #fffde7; }
 
-        .flower-bloom:nth-child(10) { top: 30px;  left: 50%; transform: translateX(-50%); animation-delay: 1.35s; }
+        .flower-bloom:nth-child(10) { top: 35px;  left: 50%; transform: translateX(-50%); animation-delay: 1.62s; }
         .flower-bloom:nth-child(10) .petal { background: linear-gradient(135deg, #ffd6a5, #ffb347); }
         .flower-bloom:nth-child(10) .flower-center { background: #fff3e0; }
 
-        .flower-bloom:nth-child(11) { top: 84px;  left: 3%; animation-delay: 1.5s; }
+        .flower-bloom:nth-child(11) { top: 88px;  left: 6%; animation-delay: 1.8s; }
         .flower-bloom:nth-child(11) .petal { background: linear-gradient(135deg, #f9a8d4, #ec4899); }
         .flower-bloom:nth-child(11) .flower-center { background: #fce7f3; }
 
-        .flower-bloom:nth-child(12) { top: 84px;  right: 3%; animation-delay: 1.65s; }
+        .flower-bloom:nth-child(12) { top: 88px;  right: 6%; animation-delay: 1.98s; }
         .flower-bloom:nth-child(12) .petal { background: linear-gradient(135deg, #6ee7b7, #34d399); }
         .flower-bloom:nth-child(12) .flower-center { background: #ecfdf5; }
 
-        .flower-bloom:nth-child(13) { top: 115px; left: 25%; animation-delay: 1.8s; }
+        .flower-bloom:nth-child(13) { top: 118px; left: 28%; animation-delay: 2.16s; }
         .flower-bloom:nth-child(13) .petal { background: linear-gradient(135deg, #fca5a5, #f87171); }
         .flower-bloom:nth-child(13) .flower-center { background: #fff1f2; }
-
-        .flower-bloom:nth-child(14) { top: 115px; right: 25%; animation-delay: 1.95s; }
-        .flower-bloom:nth-child(14) .petal { background: linear-gradient(135deg, #93c5fd, #3b82f6); }
-        .flower-bloom:nth-child(14) .flower-center { background: #eff6ff; }
-
-        .flower-bloom:nth-child(15) { top: 130px; left: 50%; transform: translateX(-50%); animation-delay: 2.1s; }
-        .flower-bloom:nth-child(15) .petal { background: linear-gradient(135deg, #d8b4fe, #a855f7); }
-        .flower-bloom:nth-child(15) .flower-center { background: #faf5ff; }
 
         .letter-container::before,
         .letter-container::after {
@@ -546,8 +538,6 @@
                 <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
                 <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
                 <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
-                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
-                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
             </div>
 
             <h1 class="letter-name">Stacey</h1>
@@ -573,11 +563,11 @@
 
             <p class="letter-paragraph">
                 Y entonces llegó el día que compramos la Mac. Sé que para alguien de afuera puede parecer solo
-                una computadora. Pero tú y yo sabemos lo que fue ese momento: fue la prueba de que
-                <span class="highlight">resistimos, aguantamos y salimos</span>. Fue el primer símbolo concreto
-                de que lo que estamos construyendo es real y que tiene futuro. Cada vez que la enciendo pienso
-                en todo lo que costó llegar ahí, y me alegra haberlo vivido contigo. Ese tipo de victorias,
-                las que nacen de la escasez, saben diferente. Saben a mérito puro.
+                una computadora. Pero tú y yo sabemos lo que fue ese momento: fue la prueba de que resistimos,
+                aguantamos y salimos. Fue el primer símbolo concreto de que
+                <span class="highlight">lo que estamos construyendo es real y que tiene futuro</span>.
+                Cada vez que la enciendo pienso en todo lo que costó llegar ahí, y me alegra haberlo vivido
+                contigo. Ese tipo de victorias, las que nacen de la escasez, saben diferente. Saben a mérito puro.
             </p>
 
             <div class="music-quote">
@@ -589,10 +579,10 @@
 
             <p class="letter-paragraph">
                 Anduvimos de aquí para allá grabando, haciendo contratos, persiguiendo clientes, construyendo
-                SAYUX con las manos y con las ganas. Y a veces pienso que cuando estemos en la cima —
-                porque vamos a llegar — <span class="letter-emphasis">voy a extrañar estos días</span>.
-                Los días en que éramos solo nosotros dos con una idea, una laptop y la certeza de que
-                íbamos a lograrlo. Estos días son los que dan sentido a todo lo que viene.
+                SAYUX con las manos y con las ganas. Y a veces pienso que cuando estemos en la cima — porque
+                vamos a llegar — voy a extrañar estos días. Los días en que éramos solo nosotros dos con una
+                idea, una laptop y la certeza de que íbamos a lograrlo.
+                <span class="letter-emphasis">Estos días son los que dan sentido a todo lo que viene.</span>
                 Guárdalos tú también, corazón.
             </p>
 
@@ -605,27 +595,26 @@
 
             <p class="letter-paragraph">
                 Hubo un momento este mes donde nos sentamos a hablar de verdad. A sacar todo lo que teníamos
-                atorado, sin filtros, sin guardarnos nada. Esas conversaciones dan miedo antes de tenerlas
-                y alivian cuando terminan. Porque lo que descubres del otro lado es que
-                <span class="highlight">el otro también quiere que funcione</span>, tanto como tú.
-                Que los dos están dispuestos. Eso vale más que cualquier momento perfecto.
+                atorado, sin filtros, sin guardarnos nada. Esas conversaciones dan miedo antes de tenerlas y
+                alivian cuando terminan. Porque lo que descubres del otro lado es que el otro también quiere
+                que funcione, tanto como tú. Que los dos están dispuestos.
+                <span class="highlight">Eso vale más que cualquier momento perfecto.</span>
             </p>
 
             <div class="music-quote">
                 <div class="music-quote-text">
-                    "We've come a long way from where we began.
-                    Oh, I'll tell you all about it when I see you again."
+                    "We've come a long way from where we began. Oh, I'll tell you all about it
+                    when I see you again."
                 </div>
                 <div class="music-quote-source">— Wiz Khalifa ft. Charlie Puth, "See You Again"</div>
             </div>
 
             <p class="letter-paragraph">
-                Se fue mi perrito. Y tú estuviste ahí, a mi lado, acompañándome en ese momento
-                junto con todos. No huiste del dolor ajeno ni buscaste las palabras perfectas.
-                Solo estuviste, que es lo único que se puede pedir en esos momentos y lo más
-                difícil de encontrar. <span class="letter-emphasis">Acompañar a alguien en su tristeza
-                sin intentar arreglarla</span> es un acto de amor enorme, corazón.
-                Ese día lo sentí con una claridad que no voy a olvidar.
+                Se fue mi perrito. Y tú estuviste ahí, a mi lado, acompañándome en ese momento junto con todos.
+                No huiste del dolor ajeno ni buscaste las palabras perfectas. Solo estuviste, que es lo único
+                que se puede pedir en esos momentos y lo más difícil de encontrar.
+                <span class="letter-emphasis">Acompañar a alguien en su tristeza sin intentar arreglarla es un
+                acto de amor enorme</span>, corazón. Ese día lo sentí con una claridad que no voy a olvidar.
             </p>
 
             <div class="literary-quote">
@@ -637,11 +626,11 @@
 
             <p class="letter-paragraph">
                 También hubo ramen. Y The Office en la noche mientras cenábamos. Y lasagna. Y el cumpleaños
-                de tu hermana. Y llevar a tus perritos a esterilizar y acompañarte en todo ese proceso.
-                Y descubrir juntos ese sabor que se volvió nuestro favorito.
-                <span class="highlight">En lo cotidiano también vivimos</span>, corazón, y esas rutinas
-                pequeñas son las que más voy a recordar cuando pasen los años. La noche de The Office,
-                la cena, la risa. Eso también es amor. Eso, quizás, es el amor más honesto de todos.
+                de tu hermana. Y llevar a tus perritos a esterilizar y acompañarte en todo ese proceso. Y
+                descubrir juntos ese sabor que se volvió nuestro favorito. En lo cotidiano también vivimos,
+                corazón, y esas rutinas pequeñas son las que más voy a recordar cuando pasen los años. La noche
+                de The Office, la cena, la risa.
+                <span class="highlight">Eso también es amor. Eso, quizás, es el amor más honesto de todos.</span>
             </p>
 
             <div class="music-quote">
@@ -652,17 +641,17 @@
             </div>
 
             <p class="letter-paragraph">
-                Y al final del mes, la vida empezó a responder. Llegaron clientes, llegaron contratos,
-                llegó el aire que necesitábamos. No fue magia ni suerte: fue el resultado de haber
-                aguantado cuando era difícil, de haber seguido cuando daban ganas de parar.
-                <span class="letter-emphasis">Lo que sembramos en los días austeros</span>,
-                corazón, está empezando a dar fruto. Y lo mejor es que lo vamos a cosechar juntos.
+                Y al final del mes, la vida empezó a responder. Llegaron clientes, llegaron contratos, llegó
+                el aire que necesitábamos. No fue magia ni suerte: fue el resultado de haber aguantado cuando
+                era difícil, de haber seguido cuando daban ganas de parar.
+                <span class="letter-emphasis">Lo que sembramos en los días austeros, corazón, está empezando
+                a dar fruto.</span> Y lo mejor es que lo vamos a cosechar juntos.
             </p>
 
             <div class="literary-quote">
                 <p class="literary-quote-text">
-                    "Después de la tormenta, siempre llega la calma. Y la calma sabe mejor
-                    cuando alguien estuvo contigo durante la tormenta."
+                    "Después de la tormenta, siempre llega la calma. Y la calma sabe mejor cuando alguien
+                    estuvo contigo durante la tormenta."
                 </p>
                 <div class="literary-quote-source">— Anónimo</div>
             </div>
