@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un Año - Para Stacey</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .nav-button {
+            padding: 0.6rem 1.2rem;
+            background: white;
+            border: 2px solid #d4a5a5;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-button:hover {
+            background: #d4a5a5;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 165, 165, 0.3);
+        }
+
+        .nav-button.home { border-color: #c8b6ff; }
+        .nav-button.home:hover { background: #c8b6ff; }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .nav-button:disabled:hover {
+            background: white;
+            color: #2c3e50;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            animation: floatParticle 15s ease-in-out infinite;
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translate(0, 100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.3; }
+            50% { transform: translate(var(--x), 50vh) scale(1); opacity: 0.2; }
+            90% { opacity: 0.3; }
+        }
+
+        .letter-container {
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            padding: 4rem 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            position: relative;
+            animation: fadeIn 2s ease-out;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ramo — 19 flores */
+        .flower-bouquet {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 2rem auto;
+            animation: floatBouquet 4s ease-in-out infinite;
+        }
+
+        @keyframes floatBouquet {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .flower-stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 130px;
+            background: linear-gradient(to bottom, #6ab04c, #4a8a2c);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 28px;
+            height: 15px;
+            background: #6ab04c;
+            border-radius: 0 100% 100% 0;
+            z-index: 1;
+        }
+
+        .leaf.left         { bottom: 95px;  left: 88px;  transform: rotate(-30deg); }
+        .leaf.left.lower   { bottom: 72px;  left: 84px;  transform: rotate(-40deg); }
+        .leaf.left.lowest  { bottom: 48px;  left: 88px;  transform: rotate(-25deg); }
+        .leaf.right        { bottom: 85px;  right: 88px; transform: rotate(30deg) scaleX(-1); }
+        .leaf.right.lower  { bottom: 62px;  right: 84px; transform: rotate(40deg) scaleX(-1); }
+        .leaf.right.lowest { bottom: 37px;  right: 88px; transform: rotate(25deg) scaleX(-1); }
+
+        .flower-bloom {
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bloomGrow 3s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes bloomGrow {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50%       { transform: scale(1.08) rotate(6deg); }
+        }
+
+        .petal {
+            position: absolute;
+            width: 18px;
+            height: 27px;
+            border-radius: 50% 50% 50% 0;
+            opacity: 0.9;
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg)   translateY(-17px); }
+        .petal:nth-child(2) { transform: rotate(72deg)  translateY(-17px); }
+        .petal:nth-child(3) { transform: rotate(144deg) translateY(-17px); }
+        .petal:nth-child(4) { transform: rotate(216deg) translateY(-17px); }
+        .petal:nth-child(5) { transform: rotate(288deg) translateY(-17px); }
+
+        .flower-center {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 3;
+        }
+
+        .flower-bloom:nth-child(1)  { top: 0px;   left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+        .flower-bloom:nth-child(1) .petal { background: linear-gradient(135deg, #ff6bb5, #ff4a9d); }
+        .flower-bloom:nth-child(1) .flower-center { background: #ffd700; }
+
+        .flower-bloom:nth-child(2)  { top: 14px;  left: 10%; animation-delay: 0.13s; }
+        .flower-bloom:nth-child(2) .petal { background: linear-gradient(135deg, #b19cd9, #9370db); }
+        .flower-bloom:nth-child(2) .flower-center { background: #ffe4b5; }
+
+        .flower-bloom:nth-child(3)  { top: 14px;  right: 10%; animation-delay: 0.26s; }
+        .flower-bloom:nth-child(3) .petal { background: linear-gradient(135deg, #87ceeb, #4da6d4); }
+        .flower-bloom:nth-child(3) .flower-center { background: #ffdab9; }
+
+        .flower-bloom:nth-child(4)  { top: 40px;  left: 0%; animation-delay: 0.39s; }
+        .flower-bloom:nth-child(4) .petal { background: linear-gradient(135deg, #ffb366, #ff8c42); }
+        .flower-bloom:nth-child(4) .flower-center { background: #fff8dc; }
+
+        .flower-bloom:nth-child(5)  { top: 40px;  right: 0%; animation-delay: 0.52s; }
+        .flower-bloom:nth-child(5) .petal { background: linear-gradient(135deg, #ff8ba7, #ff6b9d); }
+        .flower-bloom:nth-child(5) .flower-center { background: #fffacd; }
+
+        .flower-bloom:nth-child(6)  { top: 66px;  left: 12%; animation-delay: 0.65s; }
+        .flower-bloom:nth-child(6) .petal { background: linear-gradient(135deg, #c8a2ff, #b088f9); }
+        .flower-bloom:nth-child(6) .flower-center { background: #ffe4b5; }
+
+        .flower-bloom:nth-child(7)  { top: 66px;  right: 12%; animation-delay: 0.78s; }
+        .flower-bloom:nth-child(7) .petal { background: linear-gradient(135deg, #7ec8e3, #5eb8d8); }
+        .flower-bloom:nth-child(7) .flower-center { background: #ffdead; }
+
+        .flower-bloom:nth-child(8)  { top: 50px;  left: 50%; transform: translateX(-50%); animation-delay: 0.91s; }
+        .flower-bloom:nth-child(8) .petal { background: linear-gradient(135deg, #ffb3d9, #ff99c8); }
+        .flower-bloom:nth-child(8) .flower-center { background: #fff0f5; }
+
+        .flower-bloom:nth-child(9)  { top: 88px;  left: 50%; transform: translateX(-50%); animation-delay: 1.04s; }
+        .flower-bloom:nth-child(9) .petal { background: linear-gradient(135deg, #a8e6cf, #78d9a0); }
+        .flower-bloom:nth-child(9) .flower-center { background: #fffde7; }
+
+        .flower-bloom:nth-child(10) { top: 26px;  left: 50%; transform: translateX(-50%); animation-delay: 1.17s; }
+        .flower-bloom:nth-child(10) .petal { background: linear-gradient(135deg, #ffd6a5, #ffb347); }
+        .flower-bloom:nth-child(10) .flower-center { background: #fff3e0; }
+
+        .flower-bloom:nth-child(11) { top: 76px;  left: 0%; animation-delay: 1.3s; }
+        .flower-bloom:nth-child(11) .petal { background: linear-gradient(135deg, #f9a8d4, #ec4899); }
+        .flower-bloom:nth-child(11) .flower-center { background: #fce7f3; }
+
+        .flower-bloom:nth-child(12) { top: 76px;  right: 0%; animation-delay: 1.43s; }
+        .flower-bloom:nth-child(12) .petal { background: linear-gradient(135deg, #6ee7b7, #34d399); }
+        .flower-bloom:nth-child(12) .flower-center { background: #ecfdf5; }
+
+        .flower-bloom:nth-child(13) { top: 104px; left: 20%; animation-delay: 1.56s; }
+        .flower-bloom:nth-child(13) .petal { background: linear-gradient(135deg, #fca5a5, #f87171); }
+        .flower-bloom:nth-child(13) .flower-center { background: #fff1f2; }
+
+        .flower-bloom:nth-child(14) { top: 104px; right: 20%; animation-delay: 1.69s; }
+        .flower-bloom:nth-child(14) .petal { background: linear-gradient(135deg, #93c5fd, #3b82f6); }
+        .flower-bloom:nth-child(14) .flower-center { background: #eff6ff; }
+
+        .flower-bloom:nth-child(15) { top: 122px; left: 50%; transform: translateX(-50%); animation-delay: 1.82s; }
+        .flower-bloom:nth-child(15) .petal { background: linear-gradient(135deg, #d8b4fe, #a855f7); }
+        .flower-bloom:nth-child(15) .flower-center { background: #faf5ff; }
+
+        .flower-bloom:nth-child(16) { top: 91px;  left: 34%; animation-delay: 1.95s; }
+        .flower-bloom:nth-child(16) .petal { background: linear-gradient(135deg, #fdba74, #f97316); }
+        .flower-bloom:nth-child(16) .flower-center { background: #fff7ed; }
+
+        .flower-bloom:nth-child(17) { top: 91px;  right: 34%; animation-delay: 2.08s; }
+        .flower-bloom:nth-child(17) .petal { background: linear-gradient(135deg, #86efac, #22c55e); }
+        .flower-bloom:nth-child(17) .flower-center { background: #f0fdf4; }
+
+        .flower-bloom:nth-child(18) { top: 116px; left: 8%; animation-delay: 2.21s; }
+        .flower-bloom:nth-child(18) .petal { background: linear-gradient(135deg, #fde68a, #fbbf24); }
+        .flower-bloom:nth-child(18) .flower-center { background: #fffbeb; }
+
+        .flower-bloom:nth-child(19) { top: 116px; right: 8%; animation-delay: 2.34s; }
+        .flower-bloom:nth-child(19) .petal { background: linear-gradient(135deg, #f0abfc, #d946ef); }
+        .flower-bloom:nth-child(19) .flower-center { background: #fdf4ff; }
+
+        .letter-container::before,
+        .letter-container::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 1px;
+            width: 60px;
+            background: linear-gradient(to right, transparent, #d4a5a5, transparent);
+        }
+
+        .letter-container::before { top: 2rem; }
+        .letter-container::after  { bottom: 2rem; }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        .letter-to {
+            font-size: 0.9rem;
+            color: #999;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .letter-name {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .letter-name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: #d4a5a5;
+        }
+
+        .letter-subtitle {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 1.5rem;
+        }
+
+        .letter-content { animation: fadeIn 3s ease-out; }
+
+        .letter-paragraph {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #34495e;
+            margin-bottom: 2rem;
+            text-align: justify;
+            animation: typeLetter 0.5s ease-out backwards;
+        }
+
+        .letter-paragraph:nth-child(1)  { animation-delay: 0.5s; }
+        .letter-paragraph:nth-child(2)  { animation-delay: 1s; }
+        .letter-paragraph:nth-child(3)  { animation-delay: 1.5s; }
+        .letter-paragraph:nth-child(4)  { animation-delay: 2s; }
+        .letter-paragraph:nth-child(5)  { animation-delay: 2.5s; }
+        .letter-paragraph:nth-child(6)  { animation-delay: 3s; }
+        .letter-paragraph:nth-child(7)  { animation-delay: 3.5s; }
+        .letter-paragraph:nth-child(8)  { animation-delay: 4s; }
+        .letter-paragraph:nth-child(9)  { animation-delay: 4.5s; }
+        .letter-paragraph:nth-child(10) { animation-delay: 5s; }
+
+        @keyframes typeLetter {
+            from { opacity: 0; transform: translateX(-20px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .letter-paragraph.indent { text-indent: 2rem; }
+        .letter-emphasis { font-style: italic; color: #2c3e50; }
+
+        .music-quote {
+            margin: 2.5rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #ffe4f0, #ffd6e8);
+            border-left: 4px solid #ffb3d9;
+            border-radius: 8px;
+            font-style: italic;
+            color: #6b4566;
+            animation: fadeIn 3.5s ease-out;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255,182,217,0.2);
+        }
+
+        .music-quote::before {
+            content: '♪';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            color: #ffb3d9;
+            animation: musicNote 2s ease-in-out infinite;
+        }
+
+        @keyframes musicNote {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50%       { transform: translateY(-5px) rotate(10deg); }
+        }
+
+        .music-quote-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+            color: #8b5a86;
+        }
+
+        .music-quote-source {
+            font-size: 0.85rem;
+            color: #b88fb3;
+            text-align: right;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .literary-quote {
+            margin: 2.5rem 0;
+            padding: 2rem 2rem 2rem 2.5rem;
+            background: linear-gradient(135deg, #eef2ff, #e8ecff);
+            border-left: 4px solid #a5b4fc;
+            border-radius: 8px;
+            position: relative;
+            animation: fadeIn 3.5s ease-out;
+            box-shadow: 0 4px 15px rgba(165,180,252,0.15);
+        }
+
+        .literary-quote::before {
+            content: '\201C';
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            font-size: 3.5rem;
+            color: #a5b4fc;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .literary-quote-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #4a5568;
+            font-style: italic;
+        }
+
+        .literary-quote-source {
+            font-size: 0.85rem;
+            color: #7c8db0;
+            text-align: right;
+            margin-top: 0.8rem;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffe4f0 0%, #fff9f0 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .letter-signature {
+            margin-top: 4rem;
+            text-align: right;
+            animation: fadeIn 4s ease-out;
+        }
+
+        .signature-line {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-name {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .signature-heart {
+            font-size: 1.2rem;
+            color: #c56c6c;
+            margin-top: 0.5rem;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25%       { transform: scale(1.1); }
+            50%       { transform: scale(1); }
+        }
+
+        .letter-date {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #95a5a6;
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+
+        .letter-ps {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ecf0f1;
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .year-badge {
+            display: inline-block;
+            margin: 1.5rem auto 0.5rem auto;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #d4a5a5;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: #c56c6c;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .navbar { flex-direction: column; gap: 0.5rem; }
+            .nav-button { width: 100%; text-align: center; }
+            .letter-container { padding: 3rem 2rem; }
+            .letter-name { font-size: 2rem; }
+            .letter-paragraph { font-size: 1rem; line-height: 1.8; }
+            .music-quote-text, .literary-quote-text { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="aniversario-11-meses.html" class="nav-button">← Anterior</a>
+        <a href="index.html" class="nav-button home">🏠 Menú Principal</a>
+        <button class="nav-button" disabled>Siguiente →</button>
+    </nav>
+
+    <div id="particles"></div>
+
+    <div class="letter-container">
+        <div class="letter-date">Octubre 2026</div>
+
+        <div class="letter-header">
+            <div class="letter-to">Para</div>
+
+            <div class="flower-bouquet">
+                <div class="flower-stem"></div>
+                <div class="leaf left"></div>
+                <div class="leaf left lower"></div>
+                <div class="leaf left lowest"></div>
+                <div class="leaf right"></div>
+                <div class="leaf right lower"></div>
+                <div class="leaf right lowest"></div>
+
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+                <div class="flower-bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="flower-center"></div></div>
+            </div>
+
+            <div class="year-badge">✦ Un Año ✦</div>
+            <h1 class="letter-name">Stacey</h1>
+            <p class="letter-subtitle">Doce meses que empezaron con una duda y terminaron con la certeza más grande de mi vida</p>
+        </div>
+
+        <div class="letter-content">
+            <p class="letter-paragraph indent">
+                Hace un año no sabía muy bien qué éramos. Recuerdo los coqueteos, esa incertidumbre que
+                se instala en el pecho y no te deja respirar bien. Ese estado tan extraño donde algo se
+                siente con claridad pero nadie se atreve a decirlo todavía. Tú sin saber si tenías intención,
+                yo con mil cosas en la cabeza preguntándome si le gustaba o no le gustaba, revisando cada
+                mensaje dos veces antes de enviarlo, intentando descifrar cada sonrisa.
+                <span class="letter-emphasis">Un inicio agridulce</span>, así lo llamaría hoy. Y lo digo
+                con una ternura enorme, porque ese caos inicial, esa duda, ese miedo a equivocarnos —
+                fue lo que nos trajo hasta aquí. Que de ese coqueteo sin nombre terminamos construyendo
+                un negocio juntos, una vida juntos, un año entero juntos. A veces la vida
+                sabe más que nosotros. Y qué suerte que en este caso así fue.
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "Las grandes historias no empiezan con certezas. Empiezan con el valor
+                    de dar un primer paso sin saber a dónde lleva."
+                </p>
+                <div class="literary-quote-source">— Anónimo</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Un año. Doce meses. Doce capítulos que no podrían ser más distintos entre sí y que al mismo
+                tiempo forman la historia más coherente que he vivido. Me quedo pensando en todo lo que
+                cargamos juntos: las discusiones del tercer mes que dolieron pero nos hicieron más
+                honestos, las calles empedradas de Cuetzalan donde me cansé feliz a tu lado, el momento
+                más austero de nuestra vida — sin un peso, comiendo con lo que había, sin saber cuándo
+                iba a mejorar — y la Mac comprada con esfuerzo propio que se sentía como una medalla.
+                El susto que nos dejó callados varios días, y la conversación de madrugada donde
+                de repente todo se aclaró y descubrimos que <span class="highlight">estamos listos
+                para responder juntos por lo que venga</span>. Todo eso somos nosotros, corazón.
+                Todo eso cabe en un año. Y yo lo cargo con orgullo.
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "I've loved you for a thousand years, I'll love you for a thousand more."
+                </div>
+                <div class="music-quote-source">— Christina Perri, "A Thousand Years"</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Este último mes llegó con sus propios retos, como siempre. Nos independizamos de los gastos
+                con tu mamá — ya somos nosotros los que respondemos por lo nuestro, y eso se siente enorme.
+                No porque sea una carga, sino porque es una señal clara de hacia dónde vamos.
+                Cerramos puertas que ya no nos hacían bien: ese contrato tóxico que solo nos pesaba,
+                esa energía que se iba en el lugar equivocado. Y en su lugar llegaron clientes nuevos,
+                buenos, de los que suman. <span class="letter-emphasis">La vida tiene esa forma de
+                hacer espacio</span> cuando tú dejas de aferrarte a lo que no funciona.
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "Cuando una puerta se cierra, no te quedes mirándola tanto tiempo que no veas
+                    la que se ha abierto para ti."
+                </p>
+                <div class="literary-quote-source">— Alexander Graham Bell</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Y entonces llegó la licitación. Compitiendo contra empresas grandes, contra nombres
+                establecidos, con trayectoria y recursos que nosotros no tenemos. Y cuando me enteré,
+                lo primero que sentí no fue miedo — fue una mezcla rara de orgullo y de ganas de llorar.
+                Porque <span class="highlight">hace un año apenas teníamos la idea. Hoy competimos
+                con los grandes.</span> Eso no es casualidad ni suerte — es el resultado de doce meses
+                de no parar aunque quisiéramos, de reinventarnos cuando todo se complicó, de apostar
+                por nosotros cuando nadie más lo habría hecho. Esta licitación no es solo un contrato,
+                corazón. Es la prueba de que todo lo que aguantamos valió la pena. Es el momento donde
+                el mundo empieza a ver lo que tú y yo sabíamos desde hace meses: que SAYUX tiene
+                todo para ser grande. Y lo vamos a demostrar juntos.
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "We're on top of the world, hey, we're on top of the world, hey."
+                </div>
+                <div class="music-quote-source">— Imagine Dragons, "On Top of the World"</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Si pudiera volver al inicio — a ese tú y ese yo que no sabíamos ni qué éramos, que nos
+                mandábamos mensajes con el corazón acelerado y fingíamos que no — les diría esto:
+                <span class="letter-emphasis">no tengan miedo</span>. Que lo que están a punto de
+                vivir va a ser difícil y hermoso al mismo tiempo, a veces en el mismo día. Que van a
+                tener meses donde todo duele tanto que da ganas de parar, y meses donde todo brilla
+                tanto que no cabe en el pecho. Que van a construir un negocio desde cero con las manos
+                temblando, que van a mudarse, que van a viajar a lugares que los van a marcar, que van
+                a pelear y van a aprender a reconciliarse mejor cada vez. Y que al final de doce meses,
+                cuando se sienten a leer todo lo que vivieron, no van a poder creer lo que fueron
+                capaces de hacer juntos. Porque yo ahorita no puedo, y lo viví.
+            </p>
+
+            <div class="literary-quote">
+                <p class="literary-quote-text">
+                    "No es la montaña lo que conquistamos, sino a nosotros mismos."
+                </p>
+                <div class="literary-quote-source">— Edmund Hillary</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Contigo tengo los mejores momentos de mi vida, corazón. Y no lo digo porque suene bonito —
+                lo digo porque cuando cierro los ojos y pienso en el año, lo que aparece no son fechas
+                ni logros: apareces tú. En Cuetzalan con los pies cansados y la sonrisa entera. En la
+                noche de ramen viendo The Office, riéndonos de algo que ya ni recuerdo pero que fue
+                perfecto. En tu cara el día que llegó ese cliente grande, ese orgullo que no podías
+                esconder. En tus manos tomando las mías el día que se fue mi perrito, sin decir nada,
+                porque no había nada que decir y tú lo sabías. En el Volcanic Park corriendo con mi
+                familia como si siempre hubieras pertenecido ahí. En la Mac recién comprada que olía
+                a esfuerzo propio y a futuro. <span class="highlight">Cada uno de esos momentos
+                tiene tu nombre escrito</span>. Y juro que los guardo como lo más valioso que tengo.
+            </p>
+
+            <div class="music-quote">
+                <div class="music-quote-text">
+                    "Tú eres mi persona favorita en este mundo enorme,
+                    y aún así el mundo se siente pequeño cuando estás cerca."
+                </div>
+                <div class="music-quote-source">— Nota nuestra, octubre 2026</div>
+            </div>
+
+            <p class="letter-paragraph">
+                Y este mes terminamos The Office. Nuestra primera serie juntos. La que empezó casi
+                sin querer, en esas noches donde cenábamos sin muchas ganas de hablar de trabajo y
+                de repente se volvió lo que más esperábamos del día. No voy a mentir, corazón:
+                lloré con el final. Lloré de verdad, con todo. Y sé que tú lo viste y probablemente
+                sonreíste un poco. Pero es que no era solo una serie —
+                <span class="letter-emphasis">era nuestro ritual, nuestro descanso, nuestro espacio</span>.
+                Era el momento donde todo lo que pesaba — el trabajo, los clientes, las cuentas —
+                desaparecía y solo quedábamos nosotros dos. Gracias por mostrarme esa joya.
+                Gracias por convertir algo tan cotidiano en uno de los recuerdos más bonitos
+                que me llevo de este año. <span class="highlight">Será la primera de muchas
+                que veremos juntos</span>. Y ya no puedo imaginar ver ninguna con nadie más que contigo.
+            </p>
+
+            <p class="letter-paragraph" style="margin-top: 3rem; text-align: center; font-size: 1.15rem;">
+                Doce meses. Doce flores en este ramo que empezó con una sola.<br><br>
+                De coqueteos sin nombre a un negocio con el nuestro.<br>
+                De no tener ni un peso a competir con los grandes.<br>
+                De preguntarnos qué éramos a saber exactamente lo que somos.<br><br>
+                <span style="font-size: 1.3rem; color: #2c3e50;">Un año, corazón.</span><br><br>
+                Y yo lo volvería a vivir todo, cada mes, cada tormenta, cada madrugada difícil,<br>
+                con tal de llegar de nuevo a este momento, contigo.<br><br>
+                Te amo. Hoy, mañana, y en todos los años que siguen.
+            </p>
+        </div>
+
+        <div class="letter-signature">
+            <div class="signature-line">Con todo lo que fuimos, somos y seremos,</div>
+            <div class="signature-name">Esaú</div>
+            <div class="signature-heart">♡</div>
+        </div>
+
+        <div class="letter-ps">
+            P.D. — Un año. Un año de elegirte, de construir, de no rendirse nunca.
+            Feliz primer aniversario, mi compañera de vida. Lo mejor apenas empieza. 💚
+        </div>
+    </div>
+
+    <script>
+        const particlesContainer = document.getElementById('particles');
+        const symbols = ['·', '•', '○', '◦', '♪', '♫'];
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.fontSize = (Math.random() * 10 + 5) + 'px';
+            particle.style.color = `rgba(${180 + Math.random() * 50}, ${150 + Math.random() * 50}, ${150 + Math.random() * 50}, 0.3)`;
+            particle.style.setProperty('--x', (Math.random() * 100 - 50) + 'px');
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(particle);
+            setTimeout(() => particle.remove(), 20000);
+        }
+
+        for (let i = 0; i < 15; i++) setTimeout(() => createParticle(), i * 500);
+        setInterval(createParticle, 2000);
+
+        const paragraphs = document.querySelectorAll('.letter-paragraph');
+        paragraphs.forEach((p, index) => {
+            setTimeout(() => { p.style.animation = 'typeLetter 1s ease-out'; }, index * 300);
+        });
+    </script>
+</body>
+</html>
